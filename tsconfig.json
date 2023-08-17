@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +14,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"],
+      "@type/*": ["types/*"],
+      "@routes/*": ["routes/*"],
+      "@api/*": ["api/*"],
+      "@utils/*": ["utils/*"]
+    },
+    "outDir": "./dist" // 컴파일할때 js 파일 위치 경로 지정
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
