@@ -13,6 +13,17 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@pages/*": ["pages/*"],
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"],
+      "@types/*": ["types/*"],
+      "@routes/*": ["routes/*"],
+      "@api/*": ["api/*"]
+    },
 
     /* Linting */
     "strict": true,
