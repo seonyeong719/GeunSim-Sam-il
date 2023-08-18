@@ -24,6 +24,8 @@
       "@routes/*": ["routes/*"],
       "@api/*": ["api/*"]
     },
+    "outDir": "./dist",
+    // "types": ["vite/client"]
 
     /* Linting */
     "strict": true,
