@@ -1,0 +1,26 @@
+vite를 함께 사용할 시 초기 세팅이 많이다르다.
+현재 알게된 것들 메모.
+
+1. Font설정은 무조건 public폴더에 넣고 vite.config.ts에 
+ 
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: "Font/[name][extname]", // 폰트 파일을 정적 자원으로 포함되도록 설정
+      },
+    },
+  },
+
+  이런식으로 경로를 맞추어 설정해주면 디렉토리 안에 있는 폰트 파일들이 정적 자원으로 처리되어 
+  올바르게 로딩이 된다고 한다. (근데 config에 저렇게 설정을 안해도 폰트가 먹긴하는데 이 부분은 의문..)
+
+  2. dotenv 파일 설정
+
+  이 부분도 cra로 프로젝트를 설치했을 때 처럼 설정하면 안된다.
+  
+  cra => process.env.REACT_APP_ + ... 
+  vite => import.meta.env.VITE_ + ...
+
+  이런식으로 불러와서 사용해야 한다.
+
+  

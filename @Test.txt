@@ -1,0 +1,104 @@
+api 가능한 부분 스웨거로 테스트 중. 항목들 추려야 함. 
+
+* exerciseAlias => 이건 exercise 항목에 123 넣어봤는데 데이터 불러와짐. 다른 값은 안불러와짐. 왜지?
+    -exerciseAlias/{id}/ => 테스트로 18번 넣었는데
+    {
+        "id": 18,
+        "exercise": 123,
+        "alias": "OHP Dumbbells"
+    }
+    이렇게 옴.
+
+* exercisebaseinfo => 아무것도 넣지 않고 보내면 모든 리스트들을 보여줌. 얘도 id를 넣으면 아래 예시처럼 잘 불러와짐
+
+* exercisecategory => 이건 아무것도 집어넣지 않았을 때 제대로 온다.;; 심지어 네트워크와 공홈에 있는 데이터들과 일치.ㅋㅋ
+    - exercisecategory/{id}/  => 이건 카테고리에 나와있는 아이디값을 넣으면 제대로 불러와짐. 
+
+
+예)
+
+GET
+/exercisebaseinfo/{id}/   => id 는 20으로 넣었을 때 => 이건 리스트의 디테일 페이지.
+
+=> {
+  "id": 20,
+  "uuid": "f24cb758-9c0d-42d4-ad9e-6025c527dd13",
+  "created": "2023-08-06T10:17:17.422900+02:00",
+  "creation_date": "2023-08-06 08:17:17.422900+00:00",
+  "last_update": "2023-02-05T19:45:01.727574+01:00",
+  "last_update_global": "2023-02-05T19:45:01.727574+01:00",
+  "category": {
+    "id": 13,
+    "name": "Shoulders"
+  },
+  "muscles": [],
+  "muscles_secondary": [],
+  "equipment": [
+    {
+      "id": 3,
+      "name": "Dumbbell"
+    }
+  ],
+  "license": {
+    "id": 1,
+    "full_name": " Creative Commons Attribution Share Alike 3",
+    "short_name": "CC-BY-SA 3",
+    "url": "https://creativecommons.org/licenses/by-sa/3.0/deed.en"
+  },
+  "license_author": "trzr23",
+  "images": [],
+  "exercises": [
+    {
+      "id": 228,
+      "uuid": "880bff63-6798-4ffc-a818-b2a1ccfec0f7",
+      "name": "Arnold Press",
+      "exercise_base": 20,
+      "description": "<p>Zwei Kurzhanteln mit den Handflächen nach innen vor der Brust halten, Ellbogen unterhalb der Handgelenke.</p>\n<p>Ellbogen nach außen bringen und Hanteln über den Kopf heben. Drehung kommt aus dem Ellbogen, nicht aus den Armen!</p>\n<p>Wenn die Arme durchgestreckt sind, die gleiche Bewegung rückwärts ausführen.</p>",
+      "created": "2023-08-06T10:17:17.349574+02:00",
+      "creation_date": "2023-08-06 08:17:17.349574+00:00",
+      "language": 1,
+      "aliases": [],
+      "notes": [],
+      "license": 3,
+      "license_title": "",
+      "license_object_url": "",
+      "license_author": "bloody_disgrace",
+      "license_author_url": "",
+      "license_derivative_source_url": "",
+      "author_history": [
+        "bloody_disgrace"
+      ]
+    },
+    {
+      "id": 227,
+      "uuid": "53ca25b3-61d9-4f72-bfdb-492b83484ff5",
+      "name": "Arnold Shoulder Press",
+      "exercise_base": 20,
+      "description": "<p>Very common shoulder exercise.</p>\n<p> </p>\n<p>As shown here: https://www.youtube.com/watch?v=vj2w851ZHRM</p>",
+      "created": "2023-08-06T10:17:17.349574+02:00",
+      "creation_date": "2023-08-06 08:17:17.349574+00:00",
+      "language": 2,
+      "aliases": [],
+      "notes": [],
+      "license": 1,
+      "license_title": "",
+      "license_object_url": "",
+      "license_author": "trzr23",
+      "license_author_url": "",
+      "license_derivative_source_url": "",
+      "author_history": [
+        "trzr23"
+      ]
+    }
+  ],
+  "variations": 5,
+  "videos": [],
+  "author_history": [
+    "trzr23"
+  ],
+  "total_authors_history": [
+    "trzr23",
+    "bloody_disgrace"
+  ]
+}
+
