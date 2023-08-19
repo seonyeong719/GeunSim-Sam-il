@@ -1,7 +1,7 @@
 import { Axios } from "./@core";
 
 const PATH = "/exercise";
-const LANGUAGE = "ko";
+// const LANGUAGE = "ko";
 
 const SearchApi = {
   exercise() {
