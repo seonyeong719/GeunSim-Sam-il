@@ -18,8 +18,28 @@ const PALETTE = {
   },
 };
 
+const FONT_SIZE = {
+  xxs: "1.0rem",
+  xs: "1.4rem",
+  small: "1.6rem",
+  sm: "1.8rem",
+  medium: "2.0rem",
+  ml: "2.1rem",
+  large: "2.6rem",
+  big: "3.6rem",
+  huge: "4.8rem",
+};
+
 const FONT_WEIGHT = {
   light: "Suite_light",
+  regular: "Suite_regular",
+  bold: "Suite_bold",
+  extraBold: "Suite_extraBold",
+  heavy: "Suite_heavy",
+};
+
+const LOGO_FONT = {
+  logo: "PartialSans_regular",
 };
 
 const DEVICE_WIDTH = {
@@ -36,6 +56,8 @@ const DEVICE = {
 
 export const theme = {
   PALETTE,
+  FONT_SIZE,
   FONT_WEIGHT,
+  LOGO_FONT,
   DEVICE,
 };
