@@ -1,4 +1,6 @@
 import LayoutIndex from "@components/Layout";
+import ExercisePage from "@pages/exercisePage";
+import IngredientPage from "@pages/ingredientPage";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -10,14 +12,14 @@ const router = createBrowserRouter([
         path: "/",
         element: "",
       },
-      //   {
-      //     path: "/",
-      //     element: "",
-      //   },
-      //   {
-      //     path: "/",
-      //     element: "",
-      //   },
+      {
+        path: "/ingredient",
+        element: <IngredientPage />,
+      },
+      {
+        path: "/exercise",
+        element: <ExercisePage />,
+      },
     ],
   },
 ]);
