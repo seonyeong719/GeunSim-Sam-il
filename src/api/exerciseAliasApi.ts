@@ -1,9 +1,13 @@
 import { Axios } from "./@core";
 
-const PATH = "/exercisealias";
+const PATH: string = "/exercisealias";
 
 const ExerciseAliasApi = {
-  alias(id: number) {
+  alias() {
+    return Axios.get(PATH);
+  },
+
+  aliasId(id: number) {
     return Axios.get(PATH + id);
   },
 };
