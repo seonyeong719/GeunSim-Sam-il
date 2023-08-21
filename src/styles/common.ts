@@ -10,7 +10,7 @@ export const ModalBackground = css`
 `;
 
 export const BasicSetting = css`
-  width: 70%;
+  width: 65%;
   margin: 0 auto;
 `;
 
