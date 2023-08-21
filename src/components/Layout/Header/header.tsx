@@ -1,3 +1,4 @@
+import SearchBar from "@components/SearchBar/searchBar";
 import { FlexAlignCenter, FlexAllCenter } from "@styles/common";
 import { NAV_LIST } from "consts/navList";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,14 +7,20 @@ import { styled } from "styled-components";
 function Header() {
   const navigate = useNavigate();
 
+  type NavType = {
+    title: string;
+    address: string;
+  };
+
   return (
     <S.Wrapper>
       <S.Wrap>
         <Link to={"/"} style={{ textDecoration: "none" }}>
           <S.Logo>근심삼일</S.Logo>
         </Link>
+        <S.Search />
         <S.Div>
-          {NAV_LIST.map((el, idx) => (
+          {NAV_LIST.map((el: NavType, idx) => (
             <S.NavWrap>
               <S.Nav
                 key={idx}
@@ -35,6 +42,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 5.5rem;
   ${FlexAllCenter}
+  border-bottom: 1px solid gray;
 `;
 
 const Wrap = styled.div`
@@ -48,6 +56,14 @@ const Logo = styled.span`
   color: ${({ theme }) => theme.PALETTE.primary[100]};
   font-size: ${({ theme }) => theme.FONT_SIZE.large};
   cursor: pointer;
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    font-size: ${({ theme }) => theme.FONT_SIZE.ml};
+  }
+`;
+
+const Search = styled(SearchBar)`
+  background-color: yellow;
+  height: 20rem;
 `;
 
 const Div = styled.div`
@@ -71,6 +87,7 @@ const S = {
   Wrapper,
   Wrap,
   Logo,
+  Search,
   Div,
   NavWrap,
   Nav,

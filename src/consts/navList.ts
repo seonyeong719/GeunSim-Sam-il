@@ -11,4 +11,8 @@ export const NAV_LIST = [
     title: "추천 운동",
     address: "/exercise",
   },
+  {
+    title: "BMI 계산기",
+    address: "/bmi",
+  },
 ];
