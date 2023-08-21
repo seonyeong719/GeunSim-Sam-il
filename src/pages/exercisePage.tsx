@@ -2,6 +2,9 @@ import { BasicSetting } from "@styles/common";
 import { styled } from "styled-components";
 
 function ExercisePage() {
+
+
+  
   return (
     <S.Wrapper>
       <S.SwitchWrap>

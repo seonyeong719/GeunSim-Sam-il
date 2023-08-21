@@ -1,6 +1,7 @@
 import LayoutIndex from "@components/Layout";
 import BmiPage from "@pages/bmiPage";
 import ExercisePage from "@pages/exercisePage";
+import HomePage from "@pages/home";
 import IngredientPage from "@pages/ingredientPage";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: "",
+        element: <HomePage />,
       },
       {
         path: "/ingredient",
