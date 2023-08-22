@@ -9,7 +9,7 @@ const exerCategory = async () => {
   return res.data;
 };
 
-export const useSwitchList = () => {
+export const useCategoryList = () => {
   const { data, isLoading } = useQuery<Categorys, boolean>([QUERY_KEY.CATEGORY], () =>
     exerCategory()
   );
