@@ -1,8 +1,9 @@
+import { EquipmentApiType } from "@type/switchListType";
 import { Axios } from "./@core";
 
 const PATH: string = "/equipment";
 
-const EquipmentApi = {
+const EquipmentApi: EquipmentApiType = {
   equipment() {
     return Axios.get(PATH);
   },
