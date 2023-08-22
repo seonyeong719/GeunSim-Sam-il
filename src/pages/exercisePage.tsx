@@ -1,18 +1,20 @@
 import SwitchButton from "@components/SwitchButton/switchButton";
-import { useSwitchList } from "@hooks/Query/useSwitchList";
+import { useCategoryList } from "@hooks/Query/useCategoryList";
+import { useEquipmentList } from "@hooks/Query/useEquipmentList";
 import { BasicSetting } from "@styles/common";
-import { Categorys } from "@type/categoryType";
 import { styled } from "styled-components";
 
 function ExercisePage() {
-  const { data } = useSwitchList();
+  const { data } = useCategoryList();
+  const { data: eqData } = useEquipmentList();
   console.log(data?.results);
+  console.log(eqData?.results);
   return (
     <S.Wrap>
       <S.Wrapper>
         <S.SwitchWrap>
           <S.CategoryWrap>
-            <S.Name>카테고리</S.Name>
+            <S.Names>카테고리</S.Names>
             <S.SwitchList>
               {data?.results.map((el: { name: string }) => (
                 <S.Div>
@@ -23,9 +25,14 @@ function ExercisePage() {
             </S.SwitchList>
           </S.CategoryWrap>
           <S.EquipmentWrap>
-            <S.Name>운동 장비</S.Name>
+            <S.Names>운동 장비</S.Names>
             <S.SwitchList>
-              <div>스위치 리스트</div>
+              {eqData?.results.map((e: { name: string }) => (
+                <S.Div>
+                  <S.SwitchName>{e.name}</S.SwitchName>
+                  <SwitchButton />
+                </S.Div>
+              ))}
             </S.SwitchList>
           </S.EquipmentWrap>
         </S.SwitchWrap>
@@ -51,7 +58,7 @@ const Wrapper = styled.div`
 const SwitchWrap = styled.div``;
 const CategoryWrap = styled.div``;
 const EquipmentWrap = styled.div``;
-const Name = styled.span`
+const Names = styled.span`
   font-size: 2rem;
   font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
 `;
@@ -64,6 +71,7 @@ const Div = styled.div`
 
 const SwitchList = styled.div`
   border: 1px solid gray;
+  border-radius: 0.5rem;
   width: 16rem;
   margin: 1rem 0 2rem 0;
 `;
@@ -74,7 +82,7 @@ const ListWrap = styled.div`
 `;
 
 const SwitchName = styled.div`
-  font-size: ${({ theme }) => theme.FONT_SIZE.xs};
+  font-size: ${({ theme }) => theme.FONT_SIZE.xxs};
   color: ${({ theme }) => theme.PALETTE.fontColor[200]};
   margin: 0.5rem 0.8rem;
 `;
@@ -85,7 +93,7 @@ const S = {
   SwitchWrap,
   CategoryWrap,
   EquipmentWrap,
-  Name,
+  Names,
   Div,
   SwitchList,
   ListWrap,

@@ -5,7 +5,7 @@ const label = { inputProps: { "aria-label": "Color switch demo" } };
 function SwitchButton() {
   return (
     <div>
-      <Switch {...label} defaultChecked color="secondary" />
+      <Switch {...label} defaultChecked={false} color="secondary" />
     </div>
   );
 }
