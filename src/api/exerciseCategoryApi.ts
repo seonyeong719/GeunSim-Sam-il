@@ -1,8 +1,13 @@
+import { AxiosResponse } from "axios";
 import { Axios } from "./@core";
 
 const PATH: string = "/exercisecategory";
 
-const ExerciseCategoryApi = {
+interface ApiType {
+  category(): Promise<AxiosResponse>;
+}
+
+const ExerciseCategoryApi: ApiType = {
   category() {
     return Axios.get(PATH);
   },

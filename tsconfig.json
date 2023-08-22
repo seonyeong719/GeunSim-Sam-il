@@ -21,7 +21,7 @@
       "@styles/*": ["styles/*"],
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
-      "@types/*": ["types/*"],
+      "@type/*": ["types/*"],
       "@routes/*": ["routes/*"],
       "@api/*": ["api/*"]
     },
