@@ -3,7 +3,10 @@ import { Axios } from "./@core";
 const PATH = "/exercisebaseinfo";
 
 const ExerciseBaseInfoApi = {
-  baseInfo(id: number) {
+  baseInfo() {
+    return Axios.get(PATH);
+  },
+  baseInfoId(id: number) {
     return Axios.get(PATH + id);
   },
 };
