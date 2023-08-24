@@ -1,4 +1,4 @@
-import { EquipmentApiType } from "@type/switchListType";
+import { EquipmentApiType } from "@type/exerciseType";
 import { Axios } from "./@core";
 
 const PATH: string = "/equipment";
@@ -8,7 +8,7 @@ const EquipmentApi: EquipmentApiType = {
     return Axios.get(PATH);
   },
 
-  equipmentId(id: number) {
+  equipmentId(id) {
     return Axios.get(PATH + id);
   },
 };
