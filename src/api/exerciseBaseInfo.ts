@@ -1,10 +1,16 @@
+import { ExerciseBaseInfoApiType } from "@type/exerciseType";
 import { Axios } from "./@core";
 
 const PATH = "/exercisebaseinfo";
 
-const ExerciseBaseInfoApi = {
-  baseInfo() {
-    return Axios.get(PATH);
+const ExerciseBaseInfoApi: ExerciseBaseInfoApiType = {
+  baseInfo(offset: number) {
+    return Axios.get(PATH, {
+      params: {
+        limit: 12,
+        offset,
+      },
+    });
   },
   baseInfoId(id: number) {
     return Axios.get(PATH + id);

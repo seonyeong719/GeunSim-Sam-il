@@ -32,6 +32,11 @@ export interface BaseInfo {
           name: string; // 대표 운동 명칭
         }
       ];
+      images: [
+        {
+          image: string | undefined;
+        }
+      ];
     }
   ];
 }

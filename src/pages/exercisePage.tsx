@@ -1,14 +1,17 @@
 import SwitchButton from "@components/SwitchButton/switchButton";
+import { useBaseInfoList } from "@hooks/Query/useBaseInfo";
 import { useCategoryList } from "@hooks/Query/useCategoryList";
 import { useEquipmentList } from "@hooks/Query/useEquipmentList";
-import { BasicSetting } from "@styles/common";
+import { BasicSetting, GridAllCenter, GridColumn } from "@styles/common";
 import { styled } from "styled-components";
 
 function ExercisePage() {
+  const offset: number = 0;
+
   const { data } = useCategoryList();
   const { data: eqData } = useEquipmentList();
-  console.log(data?.results);
-  console.log(eqData?.results);
+  const { data: baseData } = useBaseInfoList(offset);
+  console.log(baseData?.results);
   return (
     <S.Wrap>
       <S.Wrapper>
@@ -37,7 +40,20 @@ function ExercisePage() {
           </S.EquipmentWrap>
         </S.SwitchWrap>
         <S.ListWrap>
-          <div>리스트</div>
+          {baseData?.results.map((list) => (
+            <S.ItemBox>
+              {list?.images[0]?.image ? (
+                <S.Img src={list?.images[0]?.image} />
+              ) : (
+                <S.Img src={"../../public/Img/로고.png"} />
+              )}
+              <S.Info>
+                <S.InfoCate>{list.category.name}</S.InfoCate>
+                <S.InfoName>{list?.exercises[0]?.name}</S.InfoName>
+                <S.InfoEq>{list?.equipment[0]?.name}</S.InfoEq>
+              </S.Info>
+            </S.ItemBox>
+          ))}
         </S.ListWrap>
       </S.Wrapper>
     </S.Wrap>
@@ -77,9 +93,37 @@ const SwitchList = styled.div`
 `;
 
 const ListWrap = styled.div`
-  background-color: yellow;
   margin: 2.8rem 0 0 5rem;
+  ${GridAllCenter}
+  ${GridColumn(3)}
 `;
+
+const ItemBox = styled.div`
+  width: 16rem;
+  height: 20rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const Img = styled.img`
+  width: 10rem;
+  height: 12rem;
+  object-fit: cover;
+`;
+
+const Info = styled.div`
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const InfoCate = styled.span``;
+const InfoName = styled.span``;
+const InfoEq = styled.span``;
 
 const SwitchName = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.xxs};
@@ -97,5 +141,11 @@ const S = {
   Div,
   SwitchList,
   ListWrap,
+  ItemBox,
+  Img,
+  Info,
+  InfoCate,
+  InfoName,
+  InfoEq,
   SwitchName,
 };
