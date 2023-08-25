@@ -1,5 +1,5 @@
 import SearchBar from "@components/SearchBar/searchBar";
-import { FlexAlignCenter, FlexAllCenter } from "@styles/common";
+import { BasicSetting, FlexAlignCenter, FlexAllCenter } from "@styles/common";
 import { NAV_LIST } from "consts/navList";
 import { Link, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
 const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 65%;
+  ${BasicSetting}
 `;
 
 const Logo = styled.span`

@@ -1,5 +1,6 @@
 import LayoutIndex from "@components/Layout";
 import BmiPage from "@pages/bmiPage";
+import DetailPage from "@pages/detailPage";
 import ExercisePage from "@pages/exercisePage";
 import HomePage from "@pages/home";
 import IngredientPage from "@pages/ingredientPage";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/bmi",
         element: <BmiPage />,
+      },
+      {
+        path: "/detail",
+        element: <DetailPage />,
       },
     ],
   },

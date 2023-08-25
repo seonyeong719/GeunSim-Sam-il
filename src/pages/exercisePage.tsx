@@ -3,15 +3,19 @@ import { useBaseInfoList } from "@hooks/Query/useBaseInfo";
 import { useCategoryList } from "@hooks/Query/useCategoryList";
 import { useEquipmentList } from "@hooks/Query/useEquipmentList";
 import { BasicSetting, GridAllCenter, GridColumn } from "@styles/common";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 function ExercisePage() {
   const offset: number = 0;
+  const navigate = useNavigate();
 
   const { data } = useCategoryList();
   const { data: eqData } = useEquipmentList();
   const { data: baseData } = useBaseInfoList(offset);
+
   console.log(baseData?.results);
+
   return (
     <S.Wrap>
       <S.Wrapper>
@@ -40,10 +44,10 @@ function ExercisePage() {
           </S.EquipmentWrap>
         </S.SwitchWrap>
         <S.ListWrap>
-          {baseData?.results.map((list) => (
-            <S.ItemBox>
+          {baseData?.results.map((list, idx) => (
+            <S.ItemBox onClick={() => navigate("/detail")}>
               {list?.images[0]?.image ? (
-                <S.Img src={list?.images[0]?.image} />
+                <S.Img src={list?.images[0]?.image} key={idx} />
               ) : (
                 <S.Img src={"../../public/Img/로고.png"} />
               )}
@@ -62,16 +66,19 @@ function ExercisePage() {
 export default ExercisePage;
 
 const Wrap = styled.div`
-  width: 100%;
+  ${BasicSetting}
 `;
 
 const Wrapper = styled.div`
-  ${BasicSetting}
+  width: 100%;
   display: flex;
   margin-top: 4rem;
 `;
 
-const SwitchWrap = styled.div``;
+const SwitchWrap = styled.div`
+  width: 16rem;
+`;
+
 const CategoryWrap = styled.div``;
 const EquipmentWrap = styled.div``;
 const Names = styled.span`
@@ -88,7 +95,8 @@ const Div = styled.div`
 const SwitchList = styled.div`
   border: 1px solid gray;
   border-radius: 0.5rem;
-  width: 16rem;
+  /* width: 16rem; */
+  width: 100%;
   margin: 1rem 0 2rem 0;
 `;
 
@@ -96,10 +104,14 @@ const ListWrap = styled.div`
   margin: 2.8rem 0 0 5rem;
   ${GridAllCenter}
   ${GridColumn(3)}
+  /* width: 100%; */
+  width: 16rem;
 `;
 
 const ItemBox = styled.div`
-  width: 16rem;
+  /* width: 16rem; */ // 여기 화면 조정 안되는 이슈 잇음
+  width: 100%;
+  background-color: green;
   height: 20rem;
   border: 1px solid gray;
   border-radius: 1rem;
@@ -107,6 +119,7 @@ const ItemBox = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 const Img = styled.img`
