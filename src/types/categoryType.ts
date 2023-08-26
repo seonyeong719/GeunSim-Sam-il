@@ -13,6 +13,7 @@ export interface CategoryRes {
 }
 
 export interface BaseInfo {
+  count: number;
   results: [
     {
       id: number;

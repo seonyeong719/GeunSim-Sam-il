@@ -1,5 +1,5 @@
 import LayoutIndex from "@components/Layout";
-import BmiPage from "@pages/bmiPage";
+import BmiPage from "@pages/BmiPage/bmiPage";
 import DetailPage from "@pages/detailPage";
 import ExercisePage from "@pages/exercisePage";
 import HomePage from "@pages/home";

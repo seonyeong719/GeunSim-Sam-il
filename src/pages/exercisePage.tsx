@@ -1,3 +1,4 @@
+// import Pagination from "@components/Pagination/pagination";
 import SwitchButton from "@components/SwitchButton/switchButton";
 import { useBaseInfoList } from "@hooks/Query/useBaseInfo";
 import { useCategoryList } from "@hooks/Query/useCategoryList";
@@ -14,7 +15,8 @@ function ExercisePage() {
   const { data: eqData } = useEquipmentList();
   const { data: baseData } = useBaseInfoList(offset);
 
-  console.log(baseData?.results);
+  // const pages = (baseData?.count!) / 12
+  console.log(baseData);
 
   return (
     <S.Wrap>
@@ -59,6 +61,7 @@ function ExercisePage() {
             </S.ItemBox>
           ))}
         </S.ListWrap>
+        {/* <Pagination /> */}
       </S.Wrapper>
     </S.Wrap>
   );
@@ -76,7 +79,7 @@ const Wrapper = styled.div`
 `;
 
 const SwitchWrap = styled.div`
-  width: 16rem;
+  min-width: 16rem;
 `;
 
 const CategoryWrap = styled.div``;
@@ -95,7 +98,6 @@ const Div = styled.div`
 const SwitchList = styled.div`
   border: 1px solid gray;
   border-radius: 0.5rem;
-  /* width: 16rem; */
   width: 100%;
   margin: 1rem 0 2rem 0;
 `;
@@ -104,17 +106,14 @@ const ListWrap = styled.div`
   margin: 2.8rem 0 0 5rem;
   ${GridAllCenter}
   ${GridColumn(3)}
-  /* width: 100%; */
-  width: 16rem;
+  width: 100%;
 `;
 
 const ItemBox = styled.div`
-  /* width: 16rem; */ // 여기 화면 조정 안되는 이슈 잇음
   width: 100%;
-  background-color: green;
   height: 20rem;
   border: 1px solid gray;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -123,8 +122,8 @@ const ItemBox = styled.div`
 `;
 
 const Img = styled.img`
-  width: 10rem;
-  height: 12rem;
+  min-width: 100%;
+  max-height: 13rem;
   object-fit: cover;
 `;
 
