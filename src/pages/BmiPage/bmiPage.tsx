@@ -2,11 +2,26 @@ import { BasicSetting, FlexAllCenter } from "@styles/common";
 import { styled } from "styled-components";
 import { GrRefresh } from "react-icons/gr";
 import { RadioBtn } from "./Components/radioGroup";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { FormValue } from "@type/formType";
+import { BmiSchema } from "consts/bmiYup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 function BmiPage() {
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<FormValue>({ resolver: yupResolver(BmiSchema) });
+
+  const onSubmit: SubmitHandler<FormValue> = (data) => {
+    alert(JSON.stringify(data));
+    console.log(data);
+  };
+
   return (
     <S.Wrapper>
-      <S.Wrap>
+      <S.Wrap onSubmit={handleSubmit(onSubmit)}>
         <S.Title>BMI</S.Title>
         <S.SelectBox>
           <S.RefreshBtn>
@@ -48,6 +63,7 @@ const SelectBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  /* padding: 0 1rem; */
 `;
 
 const RefreshBtn = styled.div`
