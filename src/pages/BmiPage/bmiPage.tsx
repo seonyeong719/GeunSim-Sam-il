@@ -6,8 +6,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { FormValue } from "@type/formType";
 import { BmiSchema } from "consts/bmiYup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import BmiInput from "./Components/bmiInput";
 
-function BmiPage() {
+const BmiPage: React.FC = () => {
   const {
     handleSubmit,
     control,
@@ -31,10 +32,34 @@ function BmiPage() {
             <RadioBtn />
           </S.Gender>
         </S.SelectBox>
+        <S.InputBoxWrap>
+          <BmiInput
+            label="신장(cm)"
+            name="height"
+            control={control}
+            errors={errors}
+            placeholder="height"
+          />
+          <BmiInput
+            label="체중(kg)"
+            name="weight"
+            control={control}
+            errors={errors}
+            placeholder="weight"
+          />
+          <BmiInput
+            label="나이(만)"
+            name="age"
+            control={control}
+            errors={errors}
+            placeholder="age"
+          />
+        </S.InputBoxWrap>
+        <S.Button>계산하기</S.Button>
       </S.Wrap>
     </S.Wrapper>
   );
-}
+};
 export default BmiPage;
 
 const Wrapper = styled.div`
@@ -63,7 +88,6 @@ const SelectBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
-  /* padding: 0 1rem; */
 `;
 
 const RefreshBtn = styled.div`
@@ -76,6 +100,24 @@ const RefreshBtn = styled.div`
 
 const Gender = styled.div``;
 
+const InputBoxWrap = styled.div`
+  padding: 2rem 0;
+`;
+
+const Button = styled.button`
+  background-color: ${({ theme }) => theme.PALETTE.primary[100]};
+  width: 7rem;
+  height: 2.5rem;
+  font-size: ${({ theme }) => theme.FONT_SIZE.xxs};
+  border: none;
+  border-radius: 0.3rem;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.PALETTE.hover};
+  }
+`;
+
 const S = {
   Wrapper,
   Wrap,
@@ -83,4 +125,6 @@ const S = {
   SelectBox,
   RefreshBtn,
   Gender,
+  InputBoxWrap,
+  Button,
 };
