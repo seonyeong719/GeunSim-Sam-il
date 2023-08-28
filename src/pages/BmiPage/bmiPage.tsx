@@ -55,7 +55,9 @@ const BmiPage: React.FC = () => {
             placeholder="age"
           />
         </S.InputBoxWrap>
-        <S.Button>계산하기</S.Button>
+        <S.BtnWrap>
+          <S.Button>계산하기</S.Button>
+        </S.BtnWrap>
       </S.Wrap>
     </S.Wrapper>
   );
@@ -109,6 +111,7 @@ const Button = styled.button`
   width: 7rem;
   height: 2.5rem;
   font-size: ${({ theme }) => theme.FONT_SIZE.xxs};
+  font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
   border: none;
   border-radius: 0.3rem;
   color: white;
@@ -116,6 +119,11 @@ const Button = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.PALETTE.hover};
   }
+`;
+
+const BtnWrap = styled.div`
+  display: flex;
+  justify-content: end;
 `;
 
 const S = {
@@ -127,4 +135,5 @@ const S = {
   Gender,
   InputBoxWrap,
   Button,
+  BtnWrap,
 };

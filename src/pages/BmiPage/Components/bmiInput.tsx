@@ -1,4 +1,5 @@
 import { ErrorMessage } from "@hookform/error-message";
+import { FlexAlignCenter } from "@styles/common";
 import { FormValue } from "@type/formType";
 import { ReactNode } from "react";
 import { Control, Controller, FieldErrors } from "react-hook-form";
@@ -15,65 +16,69 @@ interface BmiInputProps {
 
 const BmiInput: React.FC<BmiInputProps> = ({ label, name, control, errors, ...children }) => {
   return (
-    <InputWrap>
-      <InputWrapper>
-        <ItemWrap>
+    <S.InputWrap>
+      <S.InputWrapper>
+        <S.ItemWrap>
           <span>{label}</span>
-        </ItemWrap>
-        <InputBoxWrap>
+        </S.ItemWrap>
+        <S.InputBoxWrap>
           <Controller
             name={name}
             control={control}
             render={({ field }) => <input {...field} {...children} />}
           />
-        </InputBoxWrap>
-      </InputWrapper>
+        </S.InputBoxWrap>
+      </S.InputWrapper>
       {errors && (
         <div style={{ color: "red" }}>
           <ErrorMessage name={name} errors={errors} />
         </div>
       )}
-    </InputWrap>
+    </S.InputWrap>
   );
 };
 export default BmiInput;
 
 const InputWrap = styled.div`
-  display: flex;
+  ${FlexAlignCenter}
   width: 100%;
   flex-direction: column;
-  align-items: center;
 `;
 
 const InputWrapper = styled.div`
   width: 100%;
-  display: flex;
   justify-content: end;
-  align-items: center;
+  ${FlexAlignCenter}
 `;
 
 const ItemWrap = styled.div`
   display: flex;
   width: 20%;
   & > span {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
   }
 `;
 
 const InputBoxWrap = styled.div`
-  display: flex;
-  align-items: center;
+  ${FlexAlignCenter}
   width: 100%;
   & > input {
     width: 100%;
-    height: 10px;
-    border: 1px solid beige;
-    border-radius: 10px;
-    margin: 10px 0px;
+    height: 3rem;
+    border: 2px solid ${({ theme }) => theme.PALETTE.gray[200]};
+    border-radius: 0.3rem;
+    margin: 0.8rem 0;
     display: flex;
-    padding: 20px;
-    margin-left: 10px;
-    padding-left: 10px;
+    padding: 1.3rem;
+    margin-left: 0.8rem;
+    padding-left: 0.8rem;
   }
 `;
+
+const S = {
+  InputWrap,
+  InputWrapper,
+  ItemWrap,
+  InputBoxWrap,
+};
