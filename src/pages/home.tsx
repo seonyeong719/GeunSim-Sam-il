@@ -1,4 +1,4 @@
-import { BasicSetting } from "@styles/common";
+import { BasicSetting, FlexAlignCenter, FlexAllCenter, FlexJustifyCenter } from "@styles/common";
 import { useEffect } from "react";
 import { styled } from "styled-components";
 import AOS from "aos";
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
 
 const Img1Wrap = styled.div`
   padding: 8rem 0;
-  display: flex;
+  ${FlexAlignCenter}
 `;
 
 const Img1 = styled.img`
@@ -55,8 +55,8 @@ const Img1 = styled.img`
 `;
 
 const Img2Wrap = styled.div`
-  display: flex;
   justify-content: end;
+  ${FlexAlignCenter}
   padding: 12rem 0;
 `;
 
@@ -68,18 +68,15 @@ const Img2 = styled.img`
 const Img3Wrap = styled.div`
   padding: 12rem 0;
   width: 100%;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${FlexAllCenter}
 `;
 
 const Img3 = styled.img`
   width: 20rem;
   height: 20rem;
   border: 1px solid black;
-  display: flex;
-  justify-content: center;
+  ${FlexJustifyCenter}
 `;
 
 const S = {
