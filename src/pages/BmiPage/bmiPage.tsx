@@ -7,6 +7,8 @@ import { FormValue } from "@type/formType";
 import { BmiSchema } from "consts/bmiYup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import BmiInput from "./Components/bmiInput";
+import BMICalculator from "@components/BmiCalc/bmiCalc";
+import { useState } from "react";
 
 const BmiPage: React.FC = () => {
   const {
@@ -15,8 +17,14 @@ const BmiPage: React.FC = () => {
     formState: { errors },
   } = useForm<FormValue>({ resolver: yupResolver(BmiSchema) });
 
+  const [bmiResult, setBmiResult] = useState<number | null>(null);
+  const [gender, setGender] = useState<"male" | "female">("male");
+
   const onSubmit: SubmitHandler<FormValue> = (data) => {
-    alert(JSON.stringify(data));
+    const height = data.height;
+    const weight = data.weight;
+    const bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
+    setBmiResult(Number(bmi));
     console.log(data);
   };
 
@@ -29,7 +37,7 @@ const BmiPage: React.FC = () => {
             <GrRefresh />
           </S.RefreshBtn>
           <S.Gender>
-            <RadioBtn />
+            <RadioBtn gender={gender} setGender={setGender} />
           </S.Gender>
         </S.SelectBox>
         <S.InputBoxWrap>
@@ -58,6 +66,7 @@ const BmiPage: React.FC = () => {
         <S.BtnWrap>
           <S.Button>계산하기</S.Button>
         </S.BtnWrap>
+        <BMICalculator bmi={bmiResult} gender={gender} />
       </S.Wrap>
     </S.Wrapper>
   );
