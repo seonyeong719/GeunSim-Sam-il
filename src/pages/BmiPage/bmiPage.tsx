@@ -14,8 +14,14 @@ const BmiPage: React.FC = () => {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
-  } = useForm<FormValue>({ resolver: yupResolver(BmiSchema) });
+  } = useForm<FormValue>({
+    resolver: yupResolver(BmiSchema),
+    defaultValues: {
+      name: "",
+    },
+  });
 
   const [bmiResult, setBmiResult] = useState<number | null>(null);
   const [gender, setGender] = useState<"male" | "female">("male");
@@ -25,7 +31,6 @@ const BmiPage: React.FC = () => {
     const weight = data.weight;
     const bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
     setBmiResult(Number(bmi));
-    console.log(data);
   };
 
   return (
@@ -33,7 +38,7 @@ const BmiPage: React.FC = () => {
       <S.Wrap onSubmit={handleSubmit(onSubmit)}>
         <S.Title>BMI</S.Title>
         <S.SelectBox>
-          <S.RefreshBtn>
+          <S.RefreshBtn type="reset" onClick={() => reset()}>
             <GrRefresh />
           </S.RefreshBtn>
           <S.Gender>
@@ -101,11 +106,12 @@ const SelectBox = styled.div`
   margin-top: 1rem;
 `;
 
-const RefreshBtn = styled.div`
+const RefreshBtn = styled.button`
   font-size: 1.5rem;
   border: 0.3rem solid ${({ theme }) => theme.PALETTE.primary[100]};
   padding: 0.5rem;
   border-radius: 0.5rem;
+  background-color: white;
   cursor: pointer;
 `;
 

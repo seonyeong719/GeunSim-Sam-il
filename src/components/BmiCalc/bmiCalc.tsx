@@ -4,7 +4,6 @@ interface BMICalcProps {
 }
 
 const BMICalculator: React.FC<BMICalcProps> = ({ bmi, gender }) => {
-  console.log(gender);
   const getBMICategory = (bmi: number): string => {
     if (gender === "male") {
       if (bmi < 18.5) {
