@@ -4,23 +4,24 @@ interface BMICalcProps {
 }
 
 const BMICalculator: React.FC<BMICalcProps> = ({ bmi, gender }) => {
-  const getBMICategory = (calculatedBMI: number): string => {
+  console.log(gender);
+  const getBMICategory = (bmi: number): string => {
     if (gender === "male") {
-      if (calculatedBMI < 18.5) {
+      if (bmi < 18.5) {
         return "저체중";
-      } else if (calculatedBMI >= 18.5 && calculatedBMI < 24.9) {
+      } else if (bmi >= 18.5 && bmi < 24.9) {
         return "정상";
-      } else if (calculatedBMI >= 25 && calculatedBMI < 29.9) {
+      } else if (bmi >= 25 && bmi < 29.9) {
         return "과체중";
       } else {
         return "비만";
       }
     } else if (gender === "female") {
-      if (calculatedBMI < 17.5) {
+      if (bmi < 17.5) {
         return "저체중";
-      } else if (calculatedBMI >= 17.5 && calculatedBMI < 23.9) {
+      } else if (bmi >= 17.5 && bmi < 23.9) {
         return "정상";
-      } else if (calculatedBMI >= 24 && calculatedBMI < 28.9) {
+      } else if (bmi >= 24 && bmi < 28.9) {
         return "과체중";
       } else {
         return "비만";
@@ -36,7 +37,7 @@ const BMICalculator: React.FC<BMICalcProps> = ({ bmi, gender }) => {
         <div>
           <h3>결과</h3>
           <p>BMI: {bmi}</p>
-          {/* <p>Category: {getBMICategory}</p> */}
+          <p>비만도: {getBMICategory(bmi)}</p>
         </div>
       )}
     </div>

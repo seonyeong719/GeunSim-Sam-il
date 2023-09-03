@@ -22,8 +22,8 @@ export const RadioBtn: React.FC<RadioBtnProps> = ({ gender, setGender }) => {
         value={gender}
         onChange={handleChange}
       >
-        <FormControlLabel value="female" control={<Radio />} label="남자" />
-        <FormControlLabel value="male" control={<Radio />} label="여자" />
+        <FormControlLabel value="male" control={<Radio />} label="남자" />
+        <FormControlLabel value="female" control={<Radio />} label="여자" />
       </RadioGroup>
     </FormControl>
   );
