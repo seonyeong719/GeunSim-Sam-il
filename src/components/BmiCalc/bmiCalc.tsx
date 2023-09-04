@@ -1,6 +1,16 @@
+import { styled } from "styled-components";
+import { ResponsiveBullet } from "@nivo/bullet";
+import { FlexJustifyCenter } from "@styles/common";
+
 interface BMICalcProps {
   bmi: number | null;
   gender: string | null;
+}
+
+interface DataPoint {
+  id: string;
+  ranges: [number, number, number, number];
+  measures: [number];
 }
 
 const BMICalculator: React.FC<BMICalcProps> = ({ bmi, gender }) => {
@@ -30,17 +40,48 @@ const BMICalculator: React.FC<BMICalcProps> = ({ bmi, gender }) => {
     }
   };
 
+  const data: DataPoint[] = [
+    {
+      id: "BMI",
+      ranges: [18.5, 23, 25, 30],
+      measures: [bmi!], // 차트 수치
+    },
+  ];
+
   return (
     <div>
       {bmi !== null && gender !== null && (
-        <div>
-          <h3>결과</h3>
-          <p>BMI: {bmi}</p>
-          <p>비만도: {getBMICategory(bmi)}</p>
-        </div>
+        <S.Wrap>
+          <ResponsiveBullet
+            data={data}
+            maxValue={40}
+            titleOffsetX={-10}
+            titleAlign="end"
+            titleRotation={-45}
+            margin={{ top: 20, right: 10, bottom: 30, left: 30 }}
+          />
+          <S.BmiNum>
+            나의 BMI 지수 = {bmi} ({getBMICategory(bmi)})
+          </S.BmiNum>
+        </S.Wrap>
       )}
     </div>
   );
 };
 
 export default BMICalculator;
+const Wrap = styled.div`
+  height: 4rem;
+`;
+
+const BmiNum = styled.div`
+  font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
+  font-size: ${({ theme }) => theme.FONT_SIZE.small};
+  ${FlexJustifyCenter}
+  margin: 2rem;
+`;
+
+const S = {
+  Wrap,
+  BmiNum,
+};

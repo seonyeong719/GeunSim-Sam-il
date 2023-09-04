@@ -9,7 +9,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import BmiInput from "./Components/bmiInput";
 import BMICalculator from "@components/BmiCalc/bmiCalc";
 import { useState } from "react";
-import MyBulletChart from "@components/BmiCalc/bmiChart";
 
 const BmiPage: React.FC = () => {
   const {
@@ -73,7 +72,6 @@ const BmiPage: React.FC = () => {
           <S.Button>계산하기</S.Button>
         </S.BtnWrap>
         <BMICalculator bmi={bmiResult} gender={gender} />
-        <MyBulletChart />
       </S.Wrap>
     </S.Wrapper>
   );
