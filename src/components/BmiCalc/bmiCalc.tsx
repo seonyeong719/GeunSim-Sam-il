@@ -58,6 +58,7 @@ const BMICalculator: React.FC<BMICalcProps> = ({ bmi, gender }) => {
             titleOffsetX={-10}
             titleAlign="end"
             titleRotation={-45}
+            motionConfig="slow"
             margin={{ top: 20, right: 10, bottom: 30, left: 30 }}
           />
           <S.BmiNum>

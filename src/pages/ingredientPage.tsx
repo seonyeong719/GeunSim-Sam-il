@@ -1,4 +1,4 @@
-import { BasicSetting } from "@styles/common";
+import { BasicSetting, FlexAllCenter } from "@styles/common";
 import { styled } from "styled-components";
 
 function IngredientPage() {
@@ -23,11 +23,15 @@ const Wrap = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
+  padding-top: 4rem;
 `;
 
 const SearchWrap = styled.div`
   background-color: yellow;
   width: 100%;
+  ${FlexAllCenter}
+  flex-direction: column;
+  /* padding: 2rem; */
 `;
 
 const ListWrap = styled.div`
@@ -39,7 +43,9 @@ const List = styled.div``;
 
 const SearchBar = styled.div``;
 
-const Title = styled.div``;
+const Title = styled.div`
+  font-size: ${({ theme }) => theme.FONT_SIZE.medium};
+`;
 const S = {
   Wrap,
   Wrapper,
