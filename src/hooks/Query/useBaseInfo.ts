@@ -3,14 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import { BaseInfo } from "@type/categoryType";
 import { QUERY_KEY } from "consts/queryKey";
 
-const exerBaseInfo = async (offset: number) => {
-  const res = await ExerciseBaseInfoApi.baseInfo(offset);
+const exerBaseInfo = async (limit: number) => {
+  const res = await ExerciseBaseInfoApi.baseInfo(limit);
   return res.data;
 };
 
-export const useBaseInfoList = (offset: number) => {
+export const useBaseInfoList = (limit = 400) => {
   const { data, isLoading } = useQuery<BaseInfo, boolean>([QUERY_KEY.BASE_INFO], () =>
-    exerBaseInfo(offset)
+    exerBaseInfo(limit)
   );
   return { data, isLoading };
 };

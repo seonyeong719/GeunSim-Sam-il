@@ -1,22 +1,30 @@
-// import Pagination from "@components/Pagination/pagination";
+import Pagination from "@components/Pagination/pagination";
 import SwitchButton from "@components/SwitchButton/switchButton";
 import { useBaseInfoList } from "@hooks/Query/useBaseInfo";
 import { useCategoryList } from "@hooks/Query/useCategoryList";
 import { useEquipmentList } from "@hooks/Query/useEquipmentList";
 import { BasicSetting, GridAllCenter, GridColumn } from "@styles/common";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 function ExercisePage() {
-  const offset: number = 0;
   const navigate = useNavigate();
+  const [page, setPage] = useState<number>(1);
+  console.log(page); // 현재 몇페이지인지?
 
   const { data } = useCategoryList();
   const { data: eqData } = useEquipmentList();
-  const { data: baseData } = useBaseInfoList(offset);
-
-  // const pages = (baseData?.count!) / 12
+  const { data: baseData, isLoading } = useBaseInfoList();
   console.log(baseData);
+
+  // const totalPage = baseData?.count;
+  const ddd: number[] = baseData?.results;
+  const fff: number = ddd?.length;
+  console.log(fff);
+
+  const aaa: number | undefined = fff && fff / 12;
+  console.log(Math.ceil(aaa));
 
   return (
     <S.Wrap>
@@ -45,23 +53,27 @@ function ExercisePage() {
             </S.SwitchList>
           </S.EquipmentWrap>
         </S.SwitchWrap>
-        <S.ListWrap>
-          {baseData?.results.map((list, idx) => (
-            <S.ItemBox onClick={() => navigate("/detail")}>
-              {list?.images[0]?.image ? (
-                <S.Img src={list?.images[0]?.image} key={idx} />
-              ) : (
-                <S.Img src={"../../public/Img/로고.png"} />
-              )}
-              <S.Info>
-                <S.InfoCate>{list.category.name}</S.InfoCate>
-                <S.InfoName>{list?.exercises[0]?.name}</S.InfoName>
-                <S.InfoEq>{list?.equipment[0]?.name}</S.InfoEq>
-              </S.Info>
-            </S.ItemBox>
-          ))}
-        </S.ListWrap>
-        {/* <Pagination /> */}
+        {!isLoading && (
+          <>
+            <S.ListWrap>
+              {baseData?.results.map((list, idx) => (
+                <S.ItemBox onClick={() => navigate("/detail")}>
+                  {list?.images[0]?.image ? (
+                    <S.Img src={list?.images[0]?.image} key={idx} />
+                  ) : (
+                    <S.Img src={"../../public/Img/로고.png"} />
+                  )}
+                  <S.Info>
+                    <S.InfoCate>{list.category.name}</S.InfoCate>
+                    <S.InfoName>{list?.exercises[0]?.name}</S.InfoName>
+                    <S.InfoEq>{list?.equipment[0]?.name}</S.InfoEq>
+                  </S.Info>
+                </S.ItemBox>
+              ))}
+            </S.ListWrap>
+            <Pagination totalPage={Math.ceil(aaa)} limits={10} setPage={setPage} />
+          </>
+        )}
       </S.Wrapper>
     </S.Wrap>
   );

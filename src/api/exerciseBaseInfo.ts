@@ -4,11 +4,10 @@ import { Axios } from "./@core";
 const PATH = "/exercisebaseinfo";
 
 const ExerciseBaseInfoApi: ExerciseBaseInfoApiType = {
-  baseInfo(offset: number) {
+  baseInfo(limit = 400) {
     return Axios.get(PATH, {
       params: {
-        limit: 12,
-        offset,
+        limit: limit,
       },
     });
   },
