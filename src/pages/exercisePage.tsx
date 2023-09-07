@@ -56,10 +56,10 @@ function ExercisePage() {
         {!isLoading && (
           <>
             <S.ListWrap>
-              {baseData?.results.map((list, idx) => (
-                <S.ItemBox onClick={() => navigate("/detail")}>
+              {baseData?.results.map((list) => (
+                <S.ItemBox key={list.id} onClick={() => navigate("/detail")}>
                   {list?.images[0]?.image ? (
-                    <S.Img src={list?.images[0]?.image} key={idx} />
+                    <S.Img src={list?.images[0]?.image} />
                   ) : (
                     <S.Img src={"../../public/Img/로고.png"} />
                   )}
@@ -71,10 +71,10 @@ function ExercisePage() {
                 </S.ItemBox>
               ))}
             </S.ListWrap>
-            <Pagination totalPage={Math.ceil(aaa)} limits={10} setPage={setPage} />
           </>
         )}
       </S.Wrapper>
+      <Pagination totalPage={Math.ceil(aaa)} limits={10} setPage={setPage} />
     </S.Wrap>
   );
 }

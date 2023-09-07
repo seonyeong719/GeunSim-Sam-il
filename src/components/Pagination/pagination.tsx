@@ -93,7 +93,6 @@ const NavBtn = styled.nav`
   ${FlexAllCenter}
   padding: 5rem 0;
   gap: 4px;
-  background-color: ${({ theme }) => theme.PALETTE.primary[200]};
 `;
 
 const ArrowBtn = styled.button`
@@ -101,7 +100,7 @@ const ArrowBtn = styled.button`
   padding-top: 0.8rem;
   font-size: 1.9rem;
   color: white;
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.PALETTE.primary[300]};
 
   &:hover {
     cursor: pointer;
@@ -118,7 +117,7 @@ const NumBtn = styled.button`
   border: none;
   margin: 0 1.1rem;
   font-size: 1.5rem;
-  color: white;
+  color: ${({ theme }) => theme.PALETTE.primary[300]};
   background-color: transparent;
   cursor: pointer;
 
