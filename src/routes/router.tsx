@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <BmiPage />,
       },
       {
-        path: "/detail",
+        path: "/detail/:id",
         element: <DetailPage />,
       },
     ],

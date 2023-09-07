@@ -56,8 +56,8 @@ function ExercisePage() {
         {!isLoading && (
           <>
             <S.ListWrap>
-              {baseData?.results.map((list) => (
-                <S.ItemBox key={list.id} onClick={() => navigate("/detail")}>
+              {baseData?.results.map((list, idx) => (
+                <S.ItemBox key={idx} onClick={() => navigate(`/detail/${list.id}`)}>
                   {list?.images[0]?.image ? (
                     <S.Img src={list?.images[0]?.image} />
                   ) : (

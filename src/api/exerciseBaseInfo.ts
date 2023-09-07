@@ -12,7 +12,11 @@ const ExerciseBaseInfoApi: ExerciseBaseInfoApiType = {
     });
   },
   baseInfoId(id: number) {
-    return Axios.get(PATH + id);
+    return Axios.get(PATH, {
+      params: {
+        id,
+      },
+    });
   },
 };
 
