@@ -1,10 +1,17 @@
+import { useBaseInfoIdList } from "@hooks/Query/useBaseInfo";
 import { BasicSetting } from "@styles/common";
+import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
 
 /**
- * 디테일 페이지의 타이틀은 exercisebaseinfo(id) axios의 exercise에 인덱스1번으로 불러와야함
+ * 디테일 페이지의 타이틀은 exercisebaseinfo(id) axios의 exercise에 인덱스1번(두번째)으로 불러와야함
+ * description 은 exercise 안에 2번째 des 사용
  */
 function DetailPage() {
+  const { id } = useParams();
+  const { data } = useBaseInfoIdList(Number(id));
+  console.log(data);
+
   return (
     <S.Wrap>
       <S.TitleWrap>
