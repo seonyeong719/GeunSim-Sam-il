@@ -41,3 +41,39 @@ export interface BaseInfo {
     }
   ];
 }
+
+export interface BaseInfoId {
+  id: number;
+  category: {
+    // 해시태그
+    id: number;
+    name: string;
+  };
+  muscles: [
+    {
+      id: number;
+      name_en: string;
+    }
+  ];
+  equipment: [
+    // 해시태그
+    {
+      id: number;
+      name: string;
+    }
+  ];
+  images: [
+    {
+      id: number;
+      // exercise_base: number;
+      image: string;
+    }
+  ];
+  exercises: [
+    {
+      id: 1970;
+      name: string;
+      description: string;
+    }
+  ];
+}
