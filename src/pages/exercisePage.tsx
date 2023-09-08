@@ -11,20 +11,16 @@ import { styled } from "styled-components";
 function ExercisePage() {
   const navigate = useNavigate();
   const [page, setPage] = useState<number>(1);
-  console.log(page); // 현재 몇페이지인지?
 
   const { data } = useCategoryList();
   const { data: eqData } = useEquipmentList();
-  const { data: baseData, isLoading } = useBaseInfoList();
-  console.log(baseData);
 
-  // const totalPage = baseData?.count;
-  const ddd: number[] = baseData?.results;
-  const fff: number = ddd?.length;
-  console.log(fff);
+  const offset: number | undefined = page * 18;
+  const { data: baseData, isLoading } = useBaseInfoList(offset);
 
-  const aaa: number | undefined = fff && fff / 12;
-  console.log(Math.ceil(aaa));
+  const total: number = baseData?.count;
+
+  const totalPage: number | undefined = total && total / 18;
 
   return (
     <S.Wrap>
@@ -74,7 +70,7 @@ function ExercisePage() {
           </>
         )}
       </S.Wrapper>
-      <Pagination totalPage={Math.ceil(aaa)} limits={10} setPage={setPage} />
+      <Pagination totalPage={Math.ceil(totalPage)} limits={10} setPage={setPage} />
     </S.Wrap>
   );
 }

@@ -10,7 +10,6 @@ import { styled } from "styled-components";
 function DetailPage() {
   const { id } = useParams();
   const { data } = useBaseInfoIdList(Number(id));
-  console.log(data);
 
   return (
     <S.Wrap>

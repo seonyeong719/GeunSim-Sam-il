@@ -11,6 +11,6 @@ export interface EquipmentApiType {
 }
 
 export interface ExerciseBaseInfoApiType {
-  baseInfo(): Promise<AxiosResponse>;
+  baseInfo(offset: number): Promise<AxiosResponse>;
   baseInfoId(id: number): Promise<AxiosResponse>;
 }

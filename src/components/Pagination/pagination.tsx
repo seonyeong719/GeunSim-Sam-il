@@ -92,15 +92,15 @@ export default Pagination;
 const NavBtn = styled.nav`
   ${FlexAllCenter}
   padding: 5rem 0;
-  gap: 4px;
 `;
 
 const ArrowBtn = styled.button`
   padding: 0.5rem;
   padding-top: 0.8rem;
-  font-size: 1.9rem;
-  color: white;
-  background-color: ${({ theme }) => theme.PALETTE.primary[300]};
+  font-size: 1.5rem;
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.PALETTE.primary[300]};
 
   &:hover {
     cursor: pointer;
@@ -115,9 +115,9 @@ const ArrowBtn = styled.button`
 
 const NumBtn = styled.button`
   border: none;
-  margin: 0 1.1rem;
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.PALETTE.primary[300]};
+  margin: 0 0.6rem;
+  font-size: 1.2rem;
+  color: black;
   background-color: transparent;
   cursor: pointer;
 
@@ -127,8 +127,8 @@ const NumBtn = styled.button`
   }
 
   &[aria-current] {
-    color: ${({ theme }) => theme.PALETTE.primary[300]};
-    font-weight: bold;
+    color: ${({ theme }) => theme.PALETTE.primary[100]};
+    font-family: ${({ theme }) => theme.FONT_WEIGHT.heavy};
   }
 `;
 
