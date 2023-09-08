@@ -71,7 +71,7 @@ export interface BaseInfoId {
   ];
   exercises: [
     {
-      id: 1970;
+      id: number;
       name: string;
       description: string;
     }

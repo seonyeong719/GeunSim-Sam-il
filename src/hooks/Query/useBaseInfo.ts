@@ -21,7 +21,7 @@ const exerBaseInfoId = async (id: number) => {
 };
 
 export const useBaseInfoIdList = (id: number) => {
-  const { data, isLoading } = useQuery<BaseInfoId, boolean>([QUERY_KEY.BASE_INFO_ID], () =>
+  const { data, isLoading } = useQuery<BaseInfoId, boolean>([QUERY_KEY.BASE_INFO_ID, id], () =>
     exerBaseInfoId(id)
   );
   return { data, isLoading };

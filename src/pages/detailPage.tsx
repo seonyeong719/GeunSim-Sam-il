@@ -10,19 +10,31 @@ import { styled } from "styled-components";
 function DetailPage() {
   const { id } = useParams();
   const { data } = useBaseInfoIdList(Number(id));
+  console.log();
 
   return (
     <S.Wrap>
       <S.TitleWrap>
-        <S.Title>dfdfd</S.Title>
+        <S.Title>{data?.exercises[0]?.name}</S.Title>
         <S.HashWrap>
-          <S.Tag>#카테고리</S.Tag>
+          <S.CategoryTag>#{data?.category.name}</S.CategoryTag>
+          {data?.equipment.map((el) => (
+            <S.EquipmentTag>#{el.name}</S.EquipmentTag>
+          ))}
         </S.HashWrap>
       </S.TitleWrap>
-      <S.Description>
-        <S.DesTitle>운동 설명 제목asdf</S.DesTitle>
-        <S.DesMent>멘트asdf</S.DesMent>
-      </S.Description>
+      <S.DescriptionWrap>
+        <S.Description>
+          <S.DesTitle>운동 설명</S.DesTitle>
+          <S.DesMent>{data?.exercises[0]?.description.replace(/<\/?[^>]+(>|$)/g, "")}</S.DesMent>
+        </S.Description>
+        {data?.images[0] ? (
+          <S.DesImg src={data?.images[0].image} />
+        ) : (
+          <S.DesImg src={"../../public/Img/로고.png"} />
+        )}
+      </S.DescriptionWrap>
+      <div style={{ backgroundColor: "red" }}>ddd</div>
     </S.Wrap>
   );
 }
@@ -48,15 +60,34 @@ const Title = styled.div`
 
 const HashWrap = styled.div``;
 
-const Tag = styled.span`
+const CategoryTag = styled.span`
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  background-color: ${({ theme }) => theme.PALETTE.primary[100]};
+  color: white;
+  margin-right: 1rem;
+`;
+
+const EquipmentTag = styled.span`
   padding: 0.6rem;
   border-radius: 0.4rem;
   background-color: ${({ theme }) => theme.PALETTE.primary[100]};
   color: white;
 `;
 
+const DescriptionWrap = styled.div`
+  display: flex;
+  margin-bottom: 5rem;
+`;
+
 const Description = styled.div`
-  padding-right: 10rem;
+  margin-right: 3.5rem;
+`;
+
+const DesImg = styled.img`
+  width: 20rem;
+  height: 15rem;
+  box-shadow: 0 5px 20px #d9d9d9;
 `;
 
 const DesTitle = styled.span`
@@ -72,8 +103,11 @@ const S = {
   TitleWrap,
   Title,
   HashWrap,
-  Tag,
+  CategoryTag,
+  EquipmentTag,
+  DescriptionWrap,
   Description,
+  DesImg,
   DesTitle,
   DesMent,
 };

@@ -5,7 +5,6 @@ const PATH = "/exercisebaseinfo";
 
 const ExerciseBaseInfoApi: ExerciseBaseInfoApiType = {
   baseInfo(offset: number) {
-    console.log(offset);
     return Axios.get(PATH, {
       params: {
         limit: 18,
@@ -14,11 +13,7 @@ const ExerciseBaseInfoApi: ExerciseBaseInfoApiType = {
     });
   },
   baseInfoId(id: number) {
-    return Axios.get(PATH, {
-      params: {
-        id,
-      },
-    });
+    return Axios.get(PATH + `/${id}`);
   },
 };
 
