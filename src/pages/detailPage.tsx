@@ -10,7 +10,7 @@ import { styled } from "styled-components";
 function DetailPage() {
   const { id } = useParams();
   const { data } = useBaseInfoIdList(Number(id));
-  console.log();
+  console.log(data);
 
   return (
     <S.Wrap>
@@ -34,7 +34,19 @@ function DetailPage() {
           <S.DesImg src={"../../public/Img/로고.png"} />
         )}
       </S.DescriptionWrap>
-      <div style={{ backgroundColor: "red" }}>ddd</div>
+      <S.MusclesWrap>
+        <S.MusTitle>운동 부위</S.MusTitle>
+        <S.PrimaryWrap>
+          <S.Primary>
+            <S.MuscleImg src={data?.muscles[0].image_url_main} />
+            <S.MuscleName></S.MuscleName>
+          </S.Primary>
+          <S.Primary>
+            <S.MuscleImg />
+            <S.MuscleName></S.MuscleName>
+          </S.Primary>
+        </S.PrimaryWrap>
+      </S.MusclesWrap>
     </S.Wrap>
   );
 }
@@ -98,6 +110,21 @@ const DesTitle = styled.span`
 const DesMent = styled.div`
   margin-top: 1rem;
 `;
+
+const MusclesWrap = styled.div``;
+
+const MusTitle = styled.span`
+  font-size: ${({ theme }) => theme.FONT_SIZE.xs};
+  font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
+`;
+
+const PrimaryWrap = styled.div``;
+
+const Primary = styled.div``;
+
+const MuscleImg = styled.img``;
+
+const MuscleName = styled.div``;
 const S = {
   Wrap,
   TitleWrap,
@@ -110,4 +137,10 @@ const S = {
   DesImg,
   DesTitle,
   DesMent,
+  MusclesWrap,
+  MusTitle,
+  PrimaryWrap,
+  Primary,
+  MuscleImg,
+  MuscleName,
 };

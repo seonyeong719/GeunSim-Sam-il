@@ -53,6 +53,7 @@ export interface BaseInfoId {
     {
       id: number;
       name_en: string;
+      image_url_main: string;
     }
   ];
   equipment: [
