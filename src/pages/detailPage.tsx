@@ -10,7 +10,7 @@ import { styled } from "styled-components";
 function DetailPage() {
   const { id } = useParams();
   const { data } = useBaseInfoIdList(Number(id));
-  console.log(data);
+  console.log(data?.muscles[0].image_url_main);
 
   return (
     <S.Wrap>
@@ -122,7 +122,10 @@ const PrimaryWrap = styled.div``;
 
 const Primary = styled.div``;
 
-const MuscleImg = styled.img``;
+const MuscleImg = styled.img`
+  width: 20rem;
+  height: 15rem;
+`;
 
 const MuscleName = styled.div``;
 const S = {
