@@ -6,6 +6,17 @@ import svgr from "vite-plugin-svgr";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgr()],
+  server: {
+    middleware: {
+      // .svg 확장자 파일에 대한 Content-Type을 설정합니다.
+      "*": (req, res, next) => {
+        if (req.url.endsWith(".svg")) {
+          res.setHeader("Content-Type", "image/svg+xml");
+        }
+        next();
+      },
+    },
+  },
   build: {
     rollupOptions: {
       output: {

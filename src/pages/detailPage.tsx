@@ -10,7 +10,7 @@ import { styled } from "styled-components";
 function DetailPage() {
   const { id } = useParams();
   const { data } = useBaseInfoIdList(Number(id));
-  console.log(data?.muscles[0].image_url_main);
+  console.log(data);
 
   return (
     <S.Wrap>
@@ -118,13 +118,17 @@ const MusTitle = styled.span`
   font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
 `;
 
-const PrimaryWrap = styled.div``;
+const PrimaryWrap = styled.div`
+  display: flex;
+`;
 
-const Primary = styled.div``;
+const Primary = styled.div`
+  background-color: red;
+`;
 
 const MuscleImg = styled.img`
-  width: 20rem;
-  height: 15rem;
+  width: 15rem;
+  height: 25rem;
 `;
 
 const MuscleName = styled.div``;
