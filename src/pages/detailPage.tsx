@@ -38,7 +38,11 @@ function DetailPage() {
         <S.MusTitle>운동 부위</S.MusTitle>
         <S.PrimaryWrap>
           <S.Primary>
-            <S.MuscleImg src={data?.muscles[0].image_url_main} />
+            {data?.muscles[0] ? (
+              <S.MuscleImg src={data?.muscles[0].image_url_main} />
+            ) : (
+              <S.MuscleImg src={"../../public/Img/로고.png"} />
+            )}
             <S.MuscleName></S.MuscleName>
           </S.Primary>
           <S.Primary>

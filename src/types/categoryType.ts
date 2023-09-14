@@ -52,8 +52,8 @@ export interface BaseInfoId {
   muscles: [
     {
       id: number;
-      name_en: string;
       image_url_main: string;
+      name_en: string;
     }
   ];
   equipment: [
