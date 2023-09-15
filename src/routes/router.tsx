@@ -1,9 +1,9 @@
 import LayoutIndex from "@components/Layout";
 import BmiPage from "@pages/BmiPage/bmiPage";
-import DetailPage from "@pages/detailPage";
-import ExercisePage from "@pages/exercisePage";
+import DetailPage from "@pages/Exercise/detailPage";
+import ExercisePage from "@pages/Exercise/exercisePage";
 import HomePage from "@pages/home";
-import IngredientPage from "@pages/ingredientPage";
+import IngredientPage from "@pages/Ingredient/ingredientPage";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
