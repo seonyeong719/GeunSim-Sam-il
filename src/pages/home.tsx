@@ -45,11 +45,17 @@ function HomePage() {
 export default HomePage;
 
 const Wrap = styled.div`
-  width: 100%;
+  ${BasicSetting}
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    width: 80%;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 90%;
+  }
 `;
 
 const Wrapper = styled.div`
-  ${BasicSetting}
+  width: 100%;
   height: 30rem;
   display: flex;
   flex-direction: column;
@@ -59,28 +65,62 @@ const Wrapper = styled.div`
 const Img1Wrap = styled.div`
   padding: 8rem 0;
   ${FlexAlignCenter}
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    padding: 0;
+    flex-direction: column;
+  }
 `;
 
 const Content = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.xs};
   margin: 0 4rem;
   line-height: 2.7rem;
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    font-size: 1.2rem;
+    line-height: 2.3rem;
+    margin: 0 2rem;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    font-size: ${({ theme }) => theme.FONT_SIZE.xxs};
+    line-height: 2rem;
+  }
 `;
 
 const Img1 = styled.img`
   width: 40rem;
   height: 30rem;
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    width: auto;
+    height: 20rem;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: auto;
+    height: 15rem;
+  }
 `;
 
 const Img2Wrap = styled.div`
   justify-content: end;
   ${FlexAlignCenter}
   padding: 12rem 0;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const Img2 = styled.img`
   width: 40rem;
   height: 30rem;
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    width: auto;
+    height: 20rem;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: auto;
+    height: 15rem;
+  }
 `;
 
 const Img3Wrap = styled.div`
@@ -94,6 +134,14 @@ const Img3 = styled.img`
   width: 20rem;
   height: 20rem;
   ${FlexJustifyCenter}
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    width: 15rem;
+    height: 15rem;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 12rem;
+    height: 12rem;
+  }
 `;
 
 const WebInfo = styled.div`
@@ -102,6 +150,11 @@ const WebInfo = styled.div`
   text-align: center;
   font-size: ${({ theme }) => theme.FONT_SIZE.xs};
   line-height: 2.3rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    font-size: ${({ theme }) => theme.FONT_SIZE.xxs};
+    line-height: 2rem;
+    width: auto;
+  }
 `;
 
 const S = {

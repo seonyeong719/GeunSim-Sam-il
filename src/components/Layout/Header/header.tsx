@@ -47,8 +47,14 @@ const Wrapper = styled.div`
 
 const Wrap = styled.div`
   display: flex;
-  justify-content: space-between;
   ${BasicSetting}
+  justify-content: space-between;
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    width: 80%;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 90%;
+  }
 `;
 
 const Logo = styled.span`
@@ -57,17 +63,19 @@ const Logo = styled.span`
   font-size: ${({ theme }) => theme.FONT_SIZE.large};
   cursor: pointer;
   @media ${({ theme }) => theme.DEVICE.tablet} {
-    font-size: ${({ theme }) => theme.FONT_SIZE.ml};
+    font-size: ${({ theme }) => theme.FONT_SIZE.sm};
   }
 `;
 
 const Search = styled(SearchBar)`
-  background-color: yellow;
   height: 20rem;
 `;
 
 const Div = styled.div`
   display: flex;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    display: none;
+  }
 `;
 
 const NavWrap = styled.div`

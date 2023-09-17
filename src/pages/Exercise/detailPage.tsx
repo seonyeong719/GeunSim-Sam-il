@@ -59,6 +59,12 @@ export default DetailPage;
 const Wrap = styled.div`
   ${BasicSetting}
   padding-top: 3rem;
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    width: 80%;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 90%;
+  }
 `;
 
 const TitleWrap = styled.div`

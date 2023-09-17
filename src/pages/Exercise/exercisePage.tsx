@@ -78,6 +78,12 @@ export default ExercisePage;
 
 const Wrap = styled.div`
   ${BasicSetting}
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    width: 80%;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 90%;
+  }
 `;
 
 const Wrapper = styled.div`

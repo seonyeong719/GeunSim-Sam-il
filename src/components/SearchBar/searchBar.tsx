@@ -15,7 +15,15 @@ const Wrapper = styled.div`
   width: 20rem;
   position: relative;
   margin-top: 0.4rem;
-  margin-left: 11rem;
+  margin-left: 8rem;
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    margin-top: 1rem;
+    width: 20rem;
+    margin-left: 5rem;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 90%;
+  }
 `;
 
 const SearchInput = styled.input`

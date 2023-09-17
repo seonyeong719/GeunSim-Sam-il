@@ -43,8 +43,8 @@ const LOGO_FONT = {
 };
 
 const DEVICE_WIDTH = {
-  mobile: 414,
-  tablet: 768,
+  mobile: 600,
+  tablet: 900,
   pc: 1440,
 };
 
