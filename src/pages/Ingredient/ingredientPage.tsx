@@ -2,9 +2,11 @@
 import Spinner from "@components/Loading/spinner";
 import { useIngredientList } from "@hooks/Query/useIngredient";
 import { BasicSetting, FlexAlignCenter } from "@styles/common";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 function IngredientPage() {
+  const navigate = useNavigate();
   const { data, isLoading } = useIngredientList();
   console.log(data);
 
@@ -21,7 +23,7 @@ function IngredientPage() {
         </S.SearchWrap>
         <S.ListWrap>
           {data?.results.map((list) => (
-            <S.List>{list.name}</S.List>
+            <S.List onClick={() => navigate(`/ingredient_detail/${list.id}`)}>{list.name}</S.List>
           ))}
         </S.ListWrap>
         {/* <Pagination totalPage={} limits={10} setPage={setPage} /> */}
@@ -64,6 +66,10 @@ const List = styled.div`
   padding: 1rem;
   margin: 1rem;
   cursor: pointer;
+  &:hover {
+    color: ${({ theme }) => theme.PALETTE.hover};
+    border: 2px solid ${({ theme }) => theme.PALETTE.hover};
+  }
 `;
 
 const SearchBar = styled.div``;
