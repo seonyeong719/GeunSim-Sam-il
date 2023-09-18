@@ -1,3 +1,4 @@
+import Spinner from "@components/Loading/spinner";
 import { useBaseInfoIdList } from "@hooks/Query/useBaseInfo";
 import { BasicSetting } from "@styles/common";
 import { useParams } from "react-router-dom";
@@ -9,8 +10,12 @@ import { styled } from "styled-components";
  */
 function DetailPage() {
   const { id } = useParams();
-  const { data } = useBaseInfoIdList(Number(id));
+  const { data, isLoading } = useBaseInfoIdList(Number(id));
   console.log(data);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <S.Wrap>
@@ -99,6 +104,7 @@ const EquipmentTag = styled.span`
 
 const DescriptionWrap = styled.div`
   display: flex;
+  justify-content: space-between;
   margin-bottom: 5rem;
 `;
 

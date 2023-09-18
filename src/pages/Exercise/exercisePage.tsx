@@ -1,3 +1,4 @@
+import Spinner from "@components/Loading/spinner";
 import Pagination from "@components/Pagination/pagination";
 import SwitchButton from "@components/SwitchButton/switchButton";
 import { useBaseInfoList } from "@hooks/Query/useBaseInfo";
@@ -21,6 +22,10 @@ function ExercisePage() {
   const total: number = baseData?.count;
 
   const totalPage: number | undefined = total && total / 18;
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <S.Wrap>
@@ -126,13 +131,19 @@ const ListWrap = styled.div`
 const ItemBox = styled.div`
   width: 100%;
   height: 20rem;
-  border: 1px solid gray;
+  box-shadow: 2px 5px 5px 2px #d9d9d9;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   overflow: hidden;
   cursor: pointer;
+  &:hover {
+    transform: scale(1.04);
+    transition: transform 0.9s;
+  }
+  transform: scale(1);
+  transition: transform 0.9s;
 `;
 
 const Img = styled.img`

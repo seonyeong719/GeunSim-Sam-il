@@ -1,4 +1,5 @@
 // import Pagination from "@components/Pagination/pagination";
+import Spinner from "@components/Loading/spinner";
 import { useIngredientList } from "@hooks/Query/useIngredient";
 import { BasicSetting, FlexAlignCenter } from "@styles/common";
 import { styled } from "styled-components";
@@ -6,6 +7,11 @@ import { styled } from "styled-components";
 function IngredientPage() {
   const { data, isLoading } = useIngredientList();
   console.log(data);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <S.Wrap>
       <S.Wrapper>
