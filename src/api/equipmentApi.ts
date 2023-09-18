@@ -1,4 +1,4 @@
-import { EquipmentApiType } from "@type/exerciseType";
+import { EquipmentApiType } from "@type/axiosType";
 import { Axios } from "./@core";
 
 const PATH: string = "/equipment";

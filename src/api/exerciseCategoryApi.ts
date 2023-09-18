@@ -1,5 +1,5 @@
 import { Axios } from "./@core";
-import { ExerciseApiType } from "@type/exerciseType";
+import { ExerciseApiType } from "@type/axiosType";
 
 const PATH: string = "/exercisecategory";
 

@@ -1,4 +1,4 @@
-import { ExerciseBaseInfoApiType } from "@type/exerciseType";
+import { ExerciseBaseInfoApiType } from "@type/axiosType";
 import { Axios } from "./@core";
 
 const PATH = "/exercisebaseinfo";

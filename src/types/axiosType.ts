@@ -14,3 +14,7 @@ export interface ExerciseBaseInfoApiType {
   baseInfo(offset: number): Promise<AxiosResponse>;
   baseInfoId(id: number): Promise<AxiosResponse>;
 }
+
+export interface ExerciseSearchApiType {
+  exercise(term: string): Promise<AxiosResponse>;
+}
