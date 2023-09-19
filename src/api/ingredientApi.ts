@@ -9,7 +9,7 @@ const IngredientApi = {
   },
 
   ingredientId(id: number) {
-    return Axios.get(PATH + id);
+    return Axios.get(PATH + `/${id}`);
     //해당 id 입력하면 목록이 나옴 근데 search랑 차이점을 모르겠음
   },
 };
