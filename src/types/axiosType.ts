@@ -18,3 +18,8 @@ export interface ExerciseBaseInfoApiType {
 export interface ExerciseSearchApiType {
   exercise(term: string): Promise<AxiosResponse>;
 }
+
+export interface IngredientsApiType {
+  ingredient(): Promise<AxiosResponse>;
+  ingredientId(id: number): Promise<AxiosResponse>;
+}

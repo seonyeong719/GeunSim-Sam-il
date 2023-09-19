@@ -1,8 +1,9 @@
+import { IngredientsApiType } from "@type/axiosType";
 import { Axios } from "./@core";
 
 const PATH: string = "/ingredient";
 
-const IngredientApi = {
+const IngredientApi: IngredientsApiType = {
   ingredient() {
     return Axios.get(PATH);
     // ingredient목록 리스트들 다 나옴
