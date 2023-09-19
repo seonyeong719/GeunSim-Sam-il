@@ -81,6 +81,9 @@ export default BmiPage;
 const Wrapper = styled.div`
   ${BasicSetting}
   ${FlexAllCenter}
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 80%;
+  }
 `;
 
 const Wrap = styled.form`
@@ -90,6 +93,12 @@ const Wrap = styled.form`
   box-shadow: 5px 5px 5px 5px #d9d9d9;
   border-radius: 1rem;
   padding: 3.5rem;
+  @media ${({ theme }) => theme.DEVICE.tablet} {
+    width: 90%;
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 95%;
+  }
 `;
 
 const Title = styled.div`

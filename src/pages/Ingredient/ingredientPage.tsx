@@ -22,6 +22,7 @@ function IngredientPage() {
           <S.SearchBar>써치바</S.SearchBar>
         </S.SearchWrap>
         <S.ListWrap>
+          <S.ListTitle>재료</S.ListTitle>
           {data?.results.map((list) => (
             <S.List onClick={() => navigate(`/ingredient_detail/${list.id}`)}>{list.name}</S.List>
           ))}
@@ -59,6 +60,13 @@ const ListWrap = styled.div`
   width: 100%;
 `;
 
+const ListTitle = styled.div`
+  margin: 0 0 1rem 1rem;
+  padding-bottom: 1rem;
+  font-size: ${({ theme }) => theme.FONT_SIZE.medium};
+  border-bottom: 2px solid #d9d9d9;
+`;
+
 const List = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.xxs};
   border: 1px solid gray;
@@ -89,6 +97,7 @@ const S = {
   Wrapper,
   SearchWrap,
   ListWrap,
+  ListTitle,
   List,
   Title,
   SearchBar,
