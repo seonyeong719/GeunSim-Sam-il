@@ -7,5 +7,6 @@ export const QUERY_KEY = {
   BASE_INFO_ID: "exercise_base_info_id",
   INGREDIENT: "ingredient_list",
   INGREDIENT_ID: "ingredient_id",
+  INGREDIENT_IMG: "ingredient_img",
   SEARCH_LIST: "search_list",
 };

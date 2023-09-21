@@ -22,4 +22,5 @@ export interface ExerciseSearchApiType {
 export interface IngredientsApiType {
   ingredient(): Promise<AxiosResponse>;
   ingredientId(id: number): Promise<AxiosResponse>;
+  ingredientImg(ingredient_id: number): Promise<AxiosResponse>;
 }

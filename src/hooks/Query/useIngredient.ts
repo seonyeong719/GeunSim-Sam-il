@@ -1,6 +1,6 @@
 import IngredientApi from "@api/ingredientApi";
 import { useQuery } from "@tanstack/react-query";
-import { IngredientIdType, IngredientType } from "@type/ingredientType";
+import { IngredientIdType, IngredientImgType, IngredientType } from "@type/ingredientType";
 import { QUERY_KEY } from "consts/queryKey";
 
 const ingred = async () => {
@@ -26,4 +26,16 @@ export const useIngredientId = (id: number) => {
     () => ingredientId(id)
   );
   return { data, isLoading };
+};
+
+const ingredientImg = async (ingredient_id: number) => {
+  const res = await IngredientApi.ingredientImg(ingredient_id);
+  return res.data;
+};
+
+export const useIngredientImg = (ingredient_id: number) => {
+  const { data } = useQuery<IngredientImgType>([QUERY_KEY.INGREDIENT_IMG, ingredient_id], () =>
+    ingredientImg(ingredient_id)
+  );
+  return { data };
 };

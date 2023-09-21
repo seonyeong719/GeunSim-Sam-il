@@ -20,3 +20,13 @@ export interface IngredientIdType {
   fat_saturated: string;
   sodium: string;
 }
+
+export interface IngredientImgType {
+  results: [
+    {
+      id: number;
+      ingredient_id: number;
+      image: string;
+    }
+  ];
+}
