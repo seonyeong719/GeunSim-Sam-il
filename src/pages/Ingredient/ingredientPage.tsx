@@ -27,8 +27,8 @@ function IngredientPage() {
             <S.List onClick={() => navigate(`/ingredient_detail/${list.id}`)}>{list.name}</S.List>
           ))}
         </S.ListWrap>
-        {/* <Pagination totalPage={} limits={10} setPage={setPage} /> */}
       </S.Wrapper>
+      {/* <Pagination totalPage={} limits={10} setPage={setPage} /> */}
     </S.Wrap>
   );
 }
@@ -47,6 +47,9 @@ const Wrap = styled.div`
 const Wrapper = styled.div`
   display: flex;
   padding-top: 4rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const SearchWrap = styled.div`
@@ -65,6 +68,9 @@ const ListTitle = styled.div`
   padding-bottom: 1rem;
   font-size: ${({ theme }) => theme.FONT_SIZE.medium};
   border-bottom: 2px solid #d9d9d9;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    font-size: ${({ theme }) => theme.FONT_SIZE.xs};
+  }
 `;
 
 const List = styled.div`

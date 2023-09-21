@@ -49,6 +49,7 @@ const Wrap = styled.div`
   display: flex;
   ${BasicSetting}
   justify-content: space-between;
+  align-items: center;
   @media ${({ theme }) => theme.DEVICE.tablet} {
     width: 80%;
   }
@@ -64,6 +65,9 @@ const Logo = styled.span`
   cursor: pointer;
   @media ${({ theme }) => theme.DEVICE.tablet} {
     font-size: ${({ theme }) => theme.FONT_SIZE.sm};
+  }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    font-size: ${({ theme }) => theme.FONT_SIZE.xs};
   }
 `;
 

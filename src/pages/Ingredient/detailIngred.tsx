@@ -1,13 +1,15 @@
 import Spinner from "@components/Loading/spinner";
-import { useIngredientId } from "@hooks/Query/useIngredient";
-import { BasicSetting } from "@styles/common";
+import { useIngredientId, useIngredientImg } from "@hooks/Query/useIngredient";
+import { BasicSetting, FlexAllCenter } from "@styles/common";
 import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
 
 function IngredientDetail() {
   const { id } = useParams();
   const { data, isLoading } = useIngredientId(Number(id));
+  const { data: imgData } = useIngredientImg(Number(id));
   console.log(data);
+  console.log(imgData);
 
   if (isLoading) {
     return <Spinner />;
@@ -51,7 +53,7 @@ function IngredientDetail() {
         </S.ListWrap>
       </S.Wrapper>
       <S.ImgWrap>
-        <S.Image src="" />
+        <S.Image src={imgData?.results[0]?.image} />
       </S.ImgWrap>
     </S.Wrap>
   );
@@ -61,18 +63,23 @@ export default IngredientDetail;
 const Wrap = styled.div`
   ${BasicSetting}
   padding-top: 3rem;
+  padding-bottom: 3rem;
   display: flex;
   @media ${({ theme }) => theme.DEVICE.tablet} {
     width: 80%;
   }
   @media ${({ theme }) => theme.DEVICE.mobile} {
     width: 90%;
+    flex-direction: column;
   }
 `;
 
 const Wrapper = styled.div`
   width: 100%;
   padding-right: 4rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    padding-right: 0;
+  }
 `;
 
 const Title = styled.div`
@@ -113,10 +120,21 @@ const Calory = styled.div``;
 
 const ImgWrap = styled.div`
   width: 50%;
-  background-color: yellow;
+  ${FlexAllCenter}
+  margin-top: 4rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 100%;
+  }
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  width: 20rem;
+  height: 32rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    width: 15rem;
+    height: 20rem;
+  }
+`;
 
 const S = {
   Wrap,
