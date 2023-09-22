@@ -1,25 +1,35 @@
 import { styled } from "styled-components";
 import { FiSearch } from "react-icons/fi";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSearchList } from "@hooks/Query/useSearchList";
+import { useState } from "react";
 
 function SearchBar() {
   const navigate = useNavigate();
-  const { term } = useParams();
-
-  const inputs = (e: any) => {
-    e.preventDefault();
-    console.log(data);
-  };
-  const { data } = useSearchList(String(term));
+  const [searchInput, setSearchInput] = useState("");
+  const { data } = useSearchList(String(searchInput));
   console.log(data);
 
-  // console.log(data);
+  const inputs = (e: any) => {
+    setSearchInput(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const searchSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(searchInput);
+    navigate(`/search_list/:term=${searchInput}`);
+  };
 
   return (
-    <S.Wrapper onSubmit={inputs}>
-      <S.SearchInput name="searchInput" placeholder="운동을 검색해 보세요!" />
-      <S.GlassWrap onClick={() => navigate(`/search_list/${id}`)}>
+    <S.Wrapper onSubmit={searchSubmit}>
+      <S.SearchInput
+        value={searchInput}
+        onChange={inputs}
+        name="searchInput"
+        placeholder="운동을 검색해 보세요!"
+      />
+      <S.GlassWrap>
         <FiSearch />
       </S.GlassWrap>
     </S.Wrapper>
@@ -38,7 +48,8 @@ const Wrapper = styled.form`
     margin-left: 5rem;
   }
   @media ${({ theme }) => theme.DEVICE.mobile} {
-    width: 90%;
+    width: 50%;
+    margin-left: 1rem;
   }
 `;
 
@@ -48,6 +59,9 @@ const SearchInput = styled.input`
   border: 1px solid gray;
   border-radius: 0.3rem;
   padding-left: 0.6rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    height: 2.2rem;
+  }
 `;
 
 const GlassWrap = styled.button`

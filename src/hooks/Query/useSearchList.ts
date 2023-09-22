@@ -9,7 +9,7 @@ const search = async (term: string) => {
 };
 
 export const useSearchList = (term: string) => {
-  const { data, isLoading } = useQuery<SearchListType, boolean>([QUERY_KEY.SEARCH_LIST], () =>
+  const { data, isLoading } = useQuery<SearchListType, boolean>([QUERY_KEY.SEARCH_LIST, term], () =>
     search(term)
   );
   return { data, isLoading };
