@@ -12,7 +12,6 @@ function SearchBar() {
 
   const inputs = (e: any) => {
     setSearchInput(e.target.value);
-    console.log(e.target.value);
   };
 
   const searchSubmit = (e: any) => {
