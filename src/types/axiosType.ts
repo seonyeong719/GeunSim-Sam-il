@@ -23,4 +23,5 @@ export interface IngredientsApiType {
   ingredient(): Promise<AxiosResponse>;
   ingredientId(id: number): Promise<AxiosResponse>;
   ingredientImg(ingredient_id: number): Promise<AxiosResponse>;
+  ingredientSearch(term: string): Promise<AxiosResponse>;
 }
