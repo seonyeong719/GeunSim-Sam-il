@@ -1,18 +1,31 @@
+import { useSearchList } from "@hooks/Query/useSearchList";
 import { BasicSetting, GridAllCenter, GridColumn } from "@styles/common";
+import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 
 function SearchList() {
+  const { term } = useParams();
+  const navigate = useNavigate();
+  const { data } = useSearchList(String(term));
+  console.log(data);
+
   return (
     <S.Wrap>
-      <S.Search>검색하신 "" 에 대한 정보입니다.</S.Search>
+      <S.Search>검색하신 "{term}" 에 대한 정보입니다.</S.Search>
       <S.ListWrap>
-        <S.ItemBox>
-          <S.Img src={"../../public/Img/로고.png"} />
-          <S.ContentWrap>
-            <S.Name>운동 이름</S.Name>
-            <S.Category>카테고리</S.Category>
-          </S.ContentWrap>
-        </S.ItemBox>
+        {data?.suggestions.map((list) => (
+          <S.ItemBox onClick={() => navigate(`/detail/${list?.data.id}`)}>
+            {list.data.image ? (
+              <S.Img src={list?.data.image} />
+            ) : (
+              <S.Img src={"../../public/Img/로고.png"} />
+            )}
+            <S.ContentWrap>
+              <S.Name>{list.data.name}</S.Name>
+              <S.Category>{list.data.category}</S.Category>
+            </S.ContentWrap>
+          </S.ItemBox>
+        ))}
       </S.ListWrap>
     </S.Wrap>
   );
@@ -35,6 +48,7 @@ const ListWrap = styled.div`
   background-color: yellow;
   ${GridAllCenter}
   ${GridColumn(3)}
+  cursor: pointer;
 `;
 
 const ItemBox = styled.div`
@@ -55,7 +69,9 @@ const ContentWrap = styled.div`
   margin-left: 3rem;
 `;
 
-const Name = styled.div``;
+const Name = styled.div`
+  margin-bottom: 1rem;
+`;
 
 const Category = styled.div``;
 
