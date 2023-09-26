@@ -4,7 +4,7 @@ export interface SearchListType {
       value: string;
       data: {
         id: number;
-        // base_id: number;
+        base_id: number;
         name: string;
         category: string;
         image: string | undefined;

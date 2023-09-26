@@ -1,3 +1,4 @@
+import { useBaseInfoIdList } from "@hooks/Query/useBaseInfo";
 import { useSearchList } from "@hooks/Query/useSearchList";
 import { BasicSetting, GridAllCenter, GridColumn } from "@styles/common";
 import { useNavigate, useParams } from "react-router-dom";
@@ -5,8 +6,15 @@ import { styled } from "styled-components";
 
 function SearchList() {
   const { term } = useParams();
-  const navigate = useNavigate();
   const { data } = useSearchList(String(term));
+  const ddd = data?.suggestions.map((a) => a.data.id);
+  const { data: baseData } = useBaseInfoIdList(Number(aaa));
+  const aaa = ddd === baseData?.images[0].id;
+  const { id = aaa } = useParams();
+
+  const navigate = useNavigate();
+  console.log(baseData);
+
   console.log(data);
 
   return (
