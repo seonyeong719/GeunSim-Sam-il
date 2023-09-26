@@ -21,7 +21,7 @@ function SearchList() {
             )}
             <S.ContentWrap>
               <S.Name>{list.data.name}</S.Name>
-              <S.Category>{list.data.category}</S.Category>
+              <S.Category>#{list.data.category}</S.Category>
             </S.ContentWrap>
           </S.ItemBox>
         ))}
@@ -40,11 +40,9 @@ const Search = styled.div`
   margin: 2rem 0;
   padding-bottom: 1rem;
   font-size: ${({ theme }) => theme.FONT_SIZE.xs};
-  /* border-bottom: 1px solid gray; */
 `;
 
 const ListWrap = styled.div`
-  background-color: yellow;
   ${GridAllCenter}
   ${GridColumn(3)}
   cursor: pointer;
@@ -56,23 +54,31 @@ const ItemBox = styled.div`
   width: 20rem;
   display: flex;
   align-items: center;
+  overflow: hidden;
 `;
 
 const Img = styled.img`
-  overflow: hidden;
   width: 6rem;
   height: 6rem;
+  padding: 0.5rem;
+  border-right: 1px dotted gray;
 `;
 
 const ContentWrap = styled.div`
-  margin-left: 3rem;
+  margin-left: 1rem;
 `;
 
 const Name = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Category = styled.div``;
+const Category = styled.span`
+  background-color: ${({ theme }) => theme.PALETTE.primary[100]};
+  color: white;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+`;
 
 const S = {
   Wrap,
