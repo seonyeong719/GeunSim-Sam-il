@@ -1,4 +1,5 @@
 // import Pagination from "@components/Pagination/pagination";
+import InSearchBar from "@components/IngredientSearchBar/inSearchBar";
 import Spinner from "@components/Loading/spinner";
 import { useIngredientList } from "@hooks/Query/useIngredient";
 import { BasicSetting, FlexAlignCenter } from "@styles/common";
@@ -19,7 +20,7 @@ function IngredientPage() {
       <S.Wrapper>
         <S.SearchWrap>
           <S.Title>음식의 재료성분을 검색해보세요!</S.Title>
-          <S.SearchBar>써치바</S.SearchBar>
+          <InSearchBar />
         </S.SearchWrap>
         <S.ListWrap>
           <S.ListTitle>재료</S.ListTitle>
@@ -49,6 +50,7 @@ const Wrapper = styled.div`
   padding-top: 4rem;
   @media ${({ theme }) => theme.DEVICE.mobile} {
     flex-direction: column;
+    padding-top: 2rem;
   }
 `;
 
@@ -56,7 +58,6 @@ const SearchWrap = styled.div`
   width: 100%;
   ${FlexAlignCenter}
   flex-direction: column;
-  /* padding: 2rem; */
 `;
 
 const ListWrap = styled.div`
@@ -86,8 +87,6 @@ const List = styled.div`
   }
 `;
 
-const SearchBar = styled.div``;
-
 const Title = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.medium};
   @media ${({ theme }) => theme.DEVICE.tablet} {
@@ -106,5 +105,4 @@ const S = {
   ListTitle,
   List,
   Title,
-  SearchBar,
 };
