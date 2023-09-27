@@ -42,7 +42,6 @@ const Wrapper = styled.div`
   width: 100%;
   height: 5.5rem;
   ${FlexAllCenter}
-  border-bottom: 1px solid gray;
 `;
 
 const Wrap = styled.div`

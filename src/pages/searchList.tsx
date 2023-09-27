@@ -1,3 +1,4 @@
+import Spinner from "@components/Loading/spinner";
 import { useSearchList } from "@hooks/Query/useSearchList";
 import { BasicSetting, GridAllCenter, GridColumn } from "@styles/common";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,14 +7,22 @@ import { styled } from "styled-components";
 function SearchList() {
   const navigate = useNavigate();
   const { term } = useParams();
-  const { data } = useSearchList(String(term));
+  const { data, isLoading } = useSearchList(String(term));
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <S.Wrap>
-      <S.Search>검색하신 "{term}" 에 대한 정보입니다.</S.Search>
+      {data?.suggestions.length ? (
+        <S.Search>검색하신 "{term}" 에 대한 정보입니다.</S.Search>
+      ) : (
+        <S.Search>검색하신 "{term}"에 대한 정보가 없습니다.</S.Search>
+      )}
       <S.ListWrap>
         {data?.suggestions.map((list) => (
-          <S.ItemBox onClick={() => navigate(`/detail/${list?.data.id}`)}>
+          <S.ItemBox onClick={() => navigate(`/detail/${list?.data.base_id}`)}>
             {list.data.image ? (
               <S.Img src={`https://wger.de/${list?.data.image}`} />
             ) : (
@@ -55,6 +64,13 @@ const ItemBox = styled.div`
   display: flex;
   align-items: center;
   overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.04);
+    transition: transform 0.9s;
+  }
+  transform: scale(1);
+  transition: transform 0.9s;
 `;
 
 const Img = styled.img`
