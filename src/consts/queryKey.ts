@@ -8,5 +8,6 @@ export const QUERY_KEY = {
   INGREDIENT: "ingredient_list",
   INGREDIENT_ID: "ingredient_id",
   INGREDIENT_IMG: "ingredient_img",
+  INGREDIENT_SEARCH: "ingredient_search",
   SEARCH_LIST: "search_list",
 };

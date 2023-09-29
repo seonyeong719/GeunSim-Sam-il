@@ -1,10 +1,30 @@
 import { styled } from "styled-components";
 import { FiSearch } from "react-icons/fi";
+import { useIngredientSearch } from "@hooks/Query/useIngredient";
+import { useState } from "react";
 
 function InSearchBar() {
+  const [ingrSearch, setIngredSearch] = useState("");
+  const { data } = useIngredientSearch(String(ingrSearch));
+  console.log(data);
+
+  const serachInput = (e: any) => {
+    setIngredSearch(e.target.value);
+  };
+
+  const searchSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(ingrSearch);
+  };
+
   return (
-    <S.Wrapper>
-      <S.SearchInput name="inSearchInput" placeholder="재료를 검색해 보세요!" />
+    <S.Wrapper onSubmit={searchSubmit}>
+      <S.SearchInput
+        onChange={serachInput}
+        value={ingrSearch}
+        name="inSearchInput"
+        placeholder="재료를 검색해 보세요!"
+      />
       <S.GlassWrap>
         <FiSearch />
       </S.GlassWrap>

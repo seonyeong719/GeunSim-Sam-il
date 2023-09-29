@@ -1,6 +1,7 @@
 import IngredientApi from "@api/ingredientApi";
 import { useQuery } from "@tanstack/react-query";
 import { IngredientIdType, IngredientImgType, IngredientType } from "@type/ingredientType";
+import { SearchListType } from "@type/searchListType";
 import { QUERY_KEY } from "consts/queryKey";
 
 const ingred = async () => {
@@ -38,4 +39,17 @@ export const useIngredientImg = (ingredient_id: number) => {
     ingredientImg(ingredient_id)
   );
   return { data };
+};
+
+const search = async (term: string) => {
+  const res = await IngredientApi.ingredientSearch(term);
+  return res.data;
+};
+
+export const useIngredientSearch = (term: string) => {
+  const { data, isLoading } = useQuery<SearchListType, boolean>(
+    [QUERY_KEY.INGREDIENT_SEARCH, term],
+    () => search(term)
+  );
+  return { data, isLoading };
 };
