@@ -41,7 +41,7 @@ export const useIngredientImg = (ingredient_id: number) => {
   return { data };
 };
 
-const search = async (term: string) => {
+const inSearch = async (term: string) => {
   const res = await IngredientApi.ingredientSearch(term);
   return res.data;
 };
@@ -49,7 +49,7 @@ const search = async (term: string) => {
 export const useIngredientSearch = (term: string) => {
   const { data, isLoading } = useQuery<SearchListType, boolean>(
     [QUERY_KEY.INGREDIENT_SEARCH, term],
-    () => search(term)
+    () => inSearch(term)
   );
   return { data, isLoading };
 };

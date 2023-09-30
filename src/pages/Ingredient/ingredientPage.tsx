@@ -1,15 +1,18 @@
 // import Pagination from "@components/Pagination/pagination";
 import InSearchBar from "@components/IngredientSearchBar/inSearchBar";
 import Spinner from "@components/Loading/spinner";
-import { useIngredientList } from "@hooks/Query/useIngredient";
+import { useIngredientList, useIngredientSearch } from "@hooks/Query/useIngredient";
 import { BasicSetting, FlexAlignCenter } from "@styles/common";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 
 function IngredientPage() {
   const navigate = useNavigate();
+  const { term } = useParams();
   const { data, isLoading } = useIngredientList();
+  const { data: inData } = useIngredientSearch(String(term));
   console.log(data);
+  console.log(term);
 
   if (isLoading) {
     return <Spinner />;

@@ -4,24 +4,24 @@ import { useIngredientSearch } from "@hooks/Query/useIngredient";
 import { useState } from "react";
 
 function InSearchBar() {
-  const [ingrSearch, setIngredSearch] = useState("");
-  const { data } = useIngredientSearch(String(ingrSearch));
+  const [ingredSearch, setIngredSearch] = useState("");
+  const { data } = useIngredientSearch(String(ingredSearch));
   console.log(data);
 
-  const serachInput = (e: any) => {
+  const searchInput = (e: any) => {
     setIngredSearch(e.target.value);
   };
 
   const searchSubmit = (e: any) => {
     e.preventDefault();
-    console.log(ingrSearch);
+    console.log(ingredSearch);
   };
 
   return (
     <S.Wrapper onSubmit={searchSubmit}>
       <S.SearchInput
-        onChange={serachInput}
-        value={ingrSearch}
+        onChange={searchInput}
+        value={ingredSearch}
         name="inSearchInput"
         placeholder="재료를 검색해 보세요!"
       />

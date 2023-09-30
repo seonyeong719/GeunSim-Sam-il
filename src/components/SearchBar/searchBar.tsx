@@ -16,7 +16,6 @@ function SearchBar() {
 
   const searchSubmit = (e: any) => {
     e.preventDefault();
-    console.log(searchInput);
     navigate(`/search_list/${searchInput}`);
   };
 
