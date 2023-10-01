@@ -10,11 +10,11 @@ function SearchBar() {
   const { data } = useSearchList(String(searchInput));
   console.log(data);
 
-  const inputs = (e: any) => {
+  const inputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
 
-  const searchSubmit = (e: any) => {
+  const searchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate(`/search_list/${searchInput}`);
   };

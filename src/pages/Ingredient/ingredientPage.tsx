@@ -3,16 +3,25 @@ import InSearchBar from "@components/IngredientSearchBar/inSearchBar";
 import Spinner from "@components/Loading/spinner";
 import { useIngredientList, useIngredientSearch } from "@hooks/Query/useIngredient";
 import { BasicSetting, FlexAlignCenter } from "@styles/common";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { styled } from "styled-components";
 
 function IngredientPage() {
   const navigate = useNavigate();
   const { term } = useParams();
-  const { data, isLoading } = useIngredientList();
+  const [searchTerm, setSearchTerm] = useState(term);
   const { data: inData } = useIngredientSearch(String(term));
+  const { data, isLoading } = useIngredientList();
   console.log(data);
-  console.log(term);
+  console.log(inData);
+
+  useEffect(() => {
+    setSearchTerm(term);
+  }, [term]);
+
+  console.log(searchTerm);
+  const handleSearch = () => {};
 
   if (isLoading) {
     return <Spinner />;
@@ -23,7 +32,7 @@ function IngredientPage() {
       <S.Wrapper>
         <S.SearchWrap>
           <S.Title>음식의 재료성분을 검색해보세요!</S.Title>
-          <InSearchBar />
+          <InSearchBar onSearch={handleSearch} />
         </S.SearchWrap>
         <S.ListWrap>
           <S.ListTitle>재료</S.ListTitle>
