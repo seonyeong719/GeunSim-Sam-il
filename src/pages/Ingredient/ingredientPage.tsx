@@ -16,7 +16,6 @@ function IngredientPage() {
   const handleDataFromChild = (data: any) => {
     setSearchData(data);
   };
-  console.log(searchData?.suggestions);
 
   if (isLoading) {
     return <Spinner />;

@@ -7,7 +7,6 @@ import { styled } from "styled-components";
 function DetailPage() {
   const { id } = useParams();
   const { data, isLoading } = useBaseInfoIdList(Number(id));
-  console.log(data);
 
   if (isLoading) {
     return <Spinner />;

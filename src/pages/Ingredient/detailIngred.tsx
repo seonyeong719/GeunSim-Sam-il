@@ -8,8 +8,6 @@ function IngredientDetail() {
   const { id } = useParams();
   const { data, isLoading } = useIngredientId(Number(id));
   const { data: imgData } = useIngredientImg(Number(id));
-  console.log(data);
-  console.log(imgData);
 
   if (isLoading) {
     return <Spinner />;
