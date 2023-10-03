@@ -3,14 +3,13 @@ import { FiSearch } from "react-icons/fi";
 import { useIngredientSearch } from "@hooks/Query/useIngredient";
 import { useState } from "react";
 
-interface InSearchBarProps {
-  onSearch: (searchTerm: string) => void;
-}
+// interface InSearchBarProps {
+//   onSearch: (searchTerm: string) => void;
+// }
 
-function InSearchBar({ onSearch }: InSearchBarProps) {
+function InSearchBar({ onSearch }: any) {
   const [ingredSearch, setIngredSearch] = useState("");
   const { data } = useIngredientSearch(String(ingredSearch));
-  console.log(data);
 
   const searchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIngredSearch(e.target.value);
@@ -18,7 +17,7 @@ function InSearchBar({ onSearch }: InSearchBarProps) {
 
   const searchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSearch(ingredSearch);
+    onSearch(data);
   };
 
   return (

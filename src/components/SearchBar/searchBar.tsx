@@ -8,7 +8,6 @@ function SearchBar() {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState("");
   const { data } = useSearchList(String(searchInput));
-  console.log(data);
 
   const inputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);

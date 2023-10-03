@@ -1,27 +1,22 @@
 // import Pagination from "@components/Pagination/pagination";
 import InSearchBar from "@components/IngredientSearchBar/inSearchBar";
 import Spinner from "@components/Loading/spinner";
-import { useIngredientList, useIngredientSearch } from "@hooks/Query/useIngredient";
+import { useIngredientList } from "@hooks/Query/useIngredient";
 import { BasicSetting, FlexAlignCenter } from "@styles/common";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { SearchListType } from "@type/searchListType";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 function IngredientPage() {
   const navigate = useNavigate();
-  const { term } = useParams();
-  const [searchTerm, setSearchTerm] = useState(term);
-  const { data: inData } = useIngredientSearch(String(term));
   const { data, isLoading } = useIngredientList();
-  console.log(data);
-  console.log(inData);
+  const [searchData, setSearchData] = useState<SearchListType>();
 
-  useEffect(() => {
-    setSearchTerm(term);
-  }, [term]);
-
-  console.log(searchTerm);
-  const handleSearch = () => {};
+  const handleDataFromChild = (data: any) => {
+    setSearchData(data);
+  };
+  console.log(searchData?.suggestions);
 
   if (isLoading) {
     return <Spinner />;
@@ -32,13 +27,21 @@ function IngredientPage() {
       <S.Wrapper>
         <S.SearchWrap>
           <S.Title>음식의 재료성분을 검색해보세요!</S.Title>
-          <InSearchBar onSearch={handleSearch} />
+          <InSearchBar onSearch={handleDataFromChild} />
         </S.SearchWrap>
         <S.ListWrap>
           <S.ListTitle>재료</S.ListTitle>
-          {data?.results.map((list) => (
-            <S.List onClick={() => navigate(`/ingredient_detail/${list.id}`)}>{list.name}</S.List>
-          ))}
+          {searchData?.suggestions
+            ? searchData.suggestions.map((el) => (
+                <S.List onClick={() => navigate(`/ingredient_detail/${el.data.id}`)}>
+                  {el.value}
+                </S.List>
+              ))
+            : data?.results.map((list) => (
+                <S.List onClick={() => navigate(`/ingredient_detail/${list.id}`)}>
+                  {list.name}
+                </S.List>
+              ))}
         </S.ListWrap>
       </S.Wrapper>
       {/* <Pagination totalPage={} limits={10} setPage={setPage} /> */}
