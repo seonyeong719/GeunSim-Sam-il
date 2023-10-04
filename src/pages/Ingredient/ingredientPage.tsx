@@ -10,7 +10,10 @@ import { styled } from "styled-components";
 
 function IngredientPage() {
   const navigate = useNavigate();
-  const { data, isLoading } = useIngredientList();
+  const [page, setPage] = useState<number>(1);
+
+  const offset: number | undefined = page * 18;
+  const { data, isLoading } = useIngredientList(offset);
   const [searchData, setSearchData] = useState<SearchListType>();
 
   const handleDataFromChild = (data: any) => {

@@ -5,8 +5,13 @@ const PATH: string = "/ingredient";
 const IMG_PATH: string = "/ingredient-image";
 
 const IngredientApi: IngredientsApiType = {
-  ingredient() {
-    return Axios.get(PATH);
+  ingredient(offset: number) {
+    return Axios.get(PATH, {
+      params: {
+        limit: 20,
+        offset,
+      },
+    });
   },
 
   ingredientId(id: number) {

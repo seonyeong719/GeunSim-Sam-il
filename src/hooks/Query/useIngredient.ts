@@ -4,14 +4,15 @@ import { IngredientIdType, IngredientImgType, IngredientType } from "@type/ingre
 import { SearchListType } from "@type/searchListType";
 import { QUERY_KEY } from "consts/queryKey";
 
-const ingred = async () => {
-  const res = await IngredientApi.ingredient();
+const ingred = async (offset: number) => {
+  const res = await IngredientApi.ingredient(offset);
   return res.data;
 };
 
-export const useIngredientList = () => {
-  const { data, isLoading } = useQuery<IngredientType, boolean>([QUERY_KEY.INGREDIENT], () =>
-    ingred()
+export const useIngredientList = (offset: number) => {
+  const { data, isLoading } = useQuery<IngredientType, boolean>(
+    [QUERY_KEY.INGREDIENT, offset],
+    () => ingred(offset)
   );
   return { data, isLoading };
 };
