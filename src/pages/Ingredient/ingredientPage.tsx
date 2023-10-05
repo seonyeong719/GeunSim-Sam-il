@@ -1,4 +1,4 @@
-// import Pagination from "@components/Pagination/pagination";
+import Pagination from "@components/Pagination/pagination";
 import InSearchBar from "@components/IngredientSearchBar/inSearchBar";
 import Spinner from "@components/Loading/spinner";
 import { useIngredientList } from "@hooks/Query/useIngredient";
@@ -10,13 +10,16 @@ import { styled } from "styled-components";
 
 function IngredientPage() {
   const navigate = useNavigate();
-  const [page, setPage] = useState<number>(1);
-
-  const offset: number | undefined = page * 18;
-  const { data, isLoading } = useIngredientList(offset);
+  const [page, setPage] = useState<number>(0);
   const [searchData, setSearchData] = useState<SearchListType>();
 
-  const handleDataFromChild = (data: any) => {
+  const offset: number | undefined = page;
+  const { data, isLoading } = useIngredientList(offset);
+
+  const total: number = data?.count;
+  const totalPage: number | undefined = total && total / 20;
+
+  const handleDataFromChild = (data: SearchListType | undefined) => {
     setSearchData(data);
   };
 
@@ -46,7 +49,7 @@ function IngredientPage() {
               ))}
         </S.ListWrap>
       </S.Wrapper>
-      {/* <Pagination totalPage={} limits={10} setPage={setPage} /> */}
+      <Pagination totalPage={Math.ceil(totalPage)} limits={10} setPage={setPage} />
     </S.Wrap>
   );
 }

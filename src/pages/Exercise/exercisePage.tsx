@@ -20,7 +20,6 @@ function ExercisePage() {
   const { data: baseData, isLoading } = useBaseInfoList(offset);
 
   const total: number = baseData?.count;
-
   const totalPage: number | undefined = total && total / 18;
 
   if (isLoading) {
