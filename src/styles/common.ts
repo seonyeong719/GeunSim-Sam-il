@@ -39,7 +39,7 @@ export const FlexSpaceBetween = css`
 export const GridAllCenter = css`
   display: grid;
   justify-items: center;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 export const GridColumn = (num: number) => css`

@@ -14,16 +14,26 @@ function HomePage() {
       <S.Wrapper>
         <S.Img1Wrap>
           <S.Img1 data-aos="fade-right" src="../../public/Img/운동고민.png" />
-          <S.Content>
-            운동하기로 마음 먹었는데... <br />
-            운동 하는 방법은 몰라.. <br />
-            근데 PT는 비싸.. <br /> 근데 운동은 잘 하고 싶어.. <br /> 나도 몸 만들고 짱짱맨, 짱짱걸
-            되고 싶어..
-            <br /> 어떻게 하지?
+          <S.Content data-aos="fade-right">
+            운동하기로 마음 먹었는데 <br />
+            운동 하는 방법은 모르고..
+            <br />
+            PT는 비싸고.. <br />
+            운동은 잘 하고 싶고.. <br /> 나도 몸 만들고 싶은데..
+            <br />
+            운동을 어떻게 하지?
           </S.Content>
         </S.Img1Wrap>
         <S.Img2Wrap>
-          <S.Content></S.Content>
+          <S.Content data-aos="fade-left">
+            스트레스 관리엔?
+            <br />
+            1. 심신의 안정을 취한다 <br />
+            2. 맛있는걸 먹는다
+            <br />
+            3. 잠을 푹 잔다 <br />
+            4. 마지막은 근심삼일과 운동하기!
+          </S.Content>
           <S.Img2 data-aos="fade-left" src="../../public/Img/스트레스 관리.png" />
         </S.Img2Wrap>
         <S.Img3Wrap>
