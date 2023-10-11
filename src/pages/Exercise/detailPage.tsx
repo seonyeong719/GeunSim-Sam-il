@@ -134,7 +134,7 @@ const PrimaryWrap = styled.div`
 `;
 
 const Primary = styled.div`
-  background-color: red;
+  /* background-color: red; */
 `;
 
 const MuscleImg = styled.img`

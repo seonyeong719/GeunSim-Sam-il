@@ -12,6 +12,8 @@ import { styled } from "styled-components";
 function ExercisePage() {
   const navigate = useNavigate();
   const [page, setPage] = useState<number>(1);
+  const [categoryFilters, setCategoryFilters] = useState<{ [key: string]: boolean }>({});
+  const [equipmentFilters, setEquipmentFilters] = useState<{ [key: string]: boolean }>({});
 
   const { data } = useCategoryList();
   const { data: eqData } = useEquipmentList();
@@ -19,7 +21,21 @@ function ExercisePage() {
   const offset: number | undefined = page * 18;
   const { data: baseData, isLoading } = useBaseInfoList(offset);
 
-  const total: number = baseData?.count;
+  const handleCategoryToggle = (categoryName: string, isChecked: boolean) => {
+    setCategoryFilters({ ...categoryFilters, [categoryName]: isChecked });
+  };
+
+  const handleEquipmentToggle = (equipmentName: string, isChecked: boolean) => {
+    setEquipmentFilters({ ...equipmentFilters, [equipmentName]: isChecked });
+  };
+
+  const filteredData = baseData?.results.filter((list) => {
+    const categoryFilter = categoryFilters[list.category.name] || false;
+    const equipmentFilter = equipmentFilters[list?.equipment[0]?.name] || false;
+    return categoryFilter && equipmentFilter;
+  });
+
+  const total: number = baseData?.count && filteredData?.length;
   const totalPage: number | undefined = total && total / 18;
 
   if (isLoading) {
@@ -34,9 +50,12 @@ function ExercisePage() {
             <S.Names>카테고리</S.Names>
             <S.SwitchList>
               {data?.results.map((el: { name: string }) => (
-                <S.Div>
+                <S.Div key={el.name}>
                   <S.SwitchName>{el.name}</S.SwitchName>
-                  <SwitchButton />
+                  <SwitchButton
+                    label={el.name}
+                    onToggle={(isChecked) => handleCategoryToggle(el.name, isChecked)}
+                  />
                 </S.Div>
               ))}
             </S.SwitchList>
@@ -45,9 +64,12 @@ function ExercisePage() {
             <S.Names>운동 장비</S.Names>
             <S.SwitchList>
               {eqData?.results.map((e: { name: string }) => (
-                <S.Div>
+                <S.Div key={e.name}>
                   <S.SwitchName>{e.name}</S.SwitchName>
-                  <SwitchButton />
+                  <SwitchButton
+                    label={e.name}
+                    onToggle={(isChecked) => handleEquipmentToggle(e.name, isChecked)}
+                  />
                 </S.Div>
               ))}
             </S.SwitchList>
@@ -55,22 +77,41 @@ function ExercisePage() {
         </S.SwitchWrap>
         {!isLoading && (
           <>
-            <S.ListWrap>
-              {baseData?.results.map((list, idx) => (
-                <S.ItemBox key={idx} onClick={() => navigate(`/detail/${list.id}`)}>
-                  {list?.images[0]?.image ? (
-                    <S.Img src={list?.images[0]?.image} />
-                  ) : (
-                    <S.Img src={"../../public/Img/로고.png"} />
-                  )}
-                  <S.Info>
-                    <S.InfoCate>{list.category.name}</S.InfoCate>
-                    <S.InfoName>{list?.exercises[0]?.name}</S.InfoName>
-                    <S.InfoEq>{list?.equipment[0]?.name}</S.InfoEq>
-                  </S.Info>
-                </S.ItemBox>
-              ))}
-            </S.ListWrap>
+            {filteredData?.length === 0 ? (
+              <S.ListWrap>
+                {baseData?.results.map((list, idx) => (
+                  <S.ItemBox key={idx} onClick={() => navigate(`/detail/${list.id}`)}>
+                    {list?.images[0]?.image ? (
+                      <S.Img src={list?.images[0]?.image} />
+                    ) : (
+                      <S.Img src={"../../public/Img/로고.png"} />
+                    )}
+                    <S.Info>
+                      <S.InfoCate>{list.category.name}</S.InfoCate>
+                      <S.InfoName>{list?.exercises[0]?.name}</S.InfoName>
+                      <S.InfoEq>{list?.equipment[0]?.name}</S.InfoEq>
+                    </S.Info>
+                  </S.ItemBox>
+                ))}
+              </S.ListWrap>
+            ) : (
+              <S.ListWrap>
+                {filteredData?.map((list, idx) => (
+                  <S.ItemBox key={idx} onClick={() => navigate(`/detail/${list.id}`)}>
+                    {list?.images[0]?.image ? (
+                      <S.Img src={list?.images[0]?.image} />
+                    ) : (
+                      <S.Img src={"../../public/Img/로고.png"} />
+                    )}
+                    <S.Info>
+                      <S.InfoCate>{list.category.name}</S.InfoCate>
+                      <S.InfoName>{list?.exercises[0]?.name}</S.InfoName>
+                      <S.InfoEq>{list?.equipment[0]?.name}</S.InfoEq>
+                    </S.Info>
+                  </S.ItemBox>
+                ))}
+              </S.ListWrap>
+            )}
           </>
         )}
       </S.Wrapper>
