@@ -35,7 +35,7 @@ function ExercisePage() {
     return categoryFilter && equipmentFilter;
   });
 
-  const total: number = baseData?.count && filteredData?.length;
+  const total: number | undefined = baseData?.count || filteredData?.length;
   const totalPage: number | undefined = total && total / 18;
 
   if (isLoading) {
@@ -115,7 +115,9 @@ function ExercisePage() {
           </>
         )}
       </S.Wrapper>
-      <Pagination totalPage={Math.ceil(totalPage)} limits={10} setPage={setPage} />
+      {totalPage !== undefined && (
+        <Pagination totalPage={Math.ceil(totalPage)} limits={10} setPage={setPage} />
+      )}
     </S.Wrap>
   );
 }

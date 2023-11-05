@@ -20,10 +20,9 @@ function Header() {
         </Link>
         <S.Search />
         <S.Div>
-          {NAV_LIST.map((el: NavType, idx) => (
-            <S.NavWrap>
+          {NAV_LIST.map((el: NavType) => (
+            <S.NavWrap key={el.title}>
               <S.Nav
-                key={idx}
                 state={el.address === location.pathname}
                 onClick={() => navigate(`${el.address}`)}
               >

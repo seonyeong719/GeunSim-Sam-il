@@ -16,8 +16,8 @@ function IngredientPage() {
   const offset: number | undefined = page;
   const { data, isLoading } = useIngredientList(offset);
 
-  const total: number = data?.count;
-  const totalPage: number | undefined = total && total / 20;
+  const total: number | undefined = data?.count;
+  const totalPage: number | undefined = total !== undefined ? total / 20 : undefined;
 
   const handleDataFromChild = (data: SearchListType | undefined) => {
     setSearchData(data);
@@ -38,18 +38,23 @@ function IngredientPage() {
           <S.ListTitle>재료</S.ListTitle>
           {searchData?.suggestions
             ? searchData.suggestions.map((el) => (
-                <S.List onClick={() => navigate(`/ingredient_detail/${el.data.id}`)}>
+                <S.List
+                  key={el.data.id}
+                  onClick={() => navigate(`/ingredient_detail/${el.data.id}`)}
+                >
                   {el.value}
                 </S.List>
               ))
             : data?.results.map((list) => (
-                <S.List onClick={() => navigate(`/ingredient_detail/${list.id}`)}>
+                <S.List key={list.id} onClick={() => navigate(`/ingredient_detail/${list.id}`)}>
                   {list.name}
                 </S.List>
               ))}
         </S.ListWrap>
       </S.Wrapper>
-      <Pagination totalPage={Math.ceil(totalPage)} limits={10} setPage={setPage} />
+      {totalPage !== undefined && (
+        <Pagination totalPage={Math.ceil(totalPage)} limits={10} setPage={setPage} />
+      )}
     </S.Wrap>
   );
 }

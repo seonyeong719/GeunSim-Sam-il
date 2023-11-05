@@ -1,13 +1,14 @@
 import { styled } from "styled-components";
 import { FiSearch } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSearchList } from "@hooks/Query/useSearchList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SearchBar() {
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState("");
-  const { data } = useSearchList(String(searchInput));
+  const location = useLocation();
+  useSearchList(String(searchInput));
 
   const inputs = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
@@ -17,6 +18,12 @@ function SearchBar() {
     e.preventDefault();
     navigate(`/search_list/${searchInput}`);
   };
+
+  useEffect(() => {
+    if (location.pathname !== `/search_list/${searchInput}`) {
+      setSearchInput("");
+    }
+  }, [location.pathname]);
 
   return (
     <S.Wrapper onSubmit={searchSubmit}>
