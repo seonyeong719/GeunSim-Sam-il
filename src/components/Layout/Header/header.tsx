@@ -3,6 +3,7 @@ import { BasicSetting, FlexAlignCenter, FlexAllCenter } from "@styles/common";
 import { NAV_LIST } from "consts/navList";
 import { Link, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import MobileHeader from "./mobileHeader";
 
 function Header() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ function Header() {
             </S.NavWrap>
           ))}
         </S.Div>
+        <MobileHeader />
       </S.Wrap>
     </S.Wrapper>
   );

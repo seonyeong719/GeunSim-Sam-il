@@ -1,5 +1,6 @@
 import React from "react";
 import Switch from "@mui/material/Switch";
+import { styled } from "styled-components";
 
 interface SwitchButtonProps {
   label: string;
@@ -16,15 +17,19 @@ function SwitchButton({ label, onToggle }: SwitchButtonProps) {
   };
 
   return (
-    <div>
+    <Wrapper>
       <Switch
         checked={checked}
         onChange={handleChange}
         inputProps={{ "aria-label": label }}
         color="secondary"
       />
-    </div>
+    </Wrapper>
   );
 }
 
 export default SwitchButton;
+
+const Wrapper = styled.div`
+  height: 2rem;
+`;

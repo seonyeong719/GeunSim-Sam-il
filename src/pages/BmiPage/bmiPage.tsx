@@ -98,6 +98,7 @@ const Wrap = styled.form`
   }
   @media ${({ theme }) => theme.DEVICE.mobile} {
     width: 95%;
+    padding: 1.5rem;
   }
 `;
 

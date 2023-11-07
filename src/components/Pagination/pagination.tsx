@@ -130,6 +130,10 @@ const NumBtn = styled.button`
     color: ${({ theme }) => theme.PALETTE.primary[100]};
     font-family: ${({ theme }) => theme.FONT_WEIGHT.heavy};
   }
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    font-size: 1rem;
+    margin: 0 0.3rem;
+  }
 `;
 
 const S = {

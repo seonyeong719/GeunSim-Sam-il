@@ -137,6 +137,9 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   margin-top: 4rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const SwitchWrap = styled.div`
@@ -148,12 +151,18 @@ const EquipmentWrap = styled.div``;
 const Names = styled.span`
   font-size: 2rem;
   font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    font-size: 1.3rem;
+  }
 `;
 
 const Div = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 1rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    height: 2rem;
+  }
 `;
 
 const SwitchList = styled.div`
@@ -161,6 +170,13 @@ const SwitchList = styled.div`
   border-radius: 0.5rem;
   width: 100%;
   margin: 1rem 0 2rem 0;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    display: flex;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 `;
 
 const ListWrap = styled.div`
@@ -168,6 +184,10 @@ const ListWrap = styled.div`
   ${GridAllCenter}
   ${GridColumn(3)}
   width: 100%;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    ${GridColumn(2)}
+    margin: 0;
+  }
 `;
 
 const ItemBox = styled.div`
@@ -208,6 +228,10 @@ const SwitchName = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.xxs};
   color: ${({ theme }) => theme.PALETTE.fontColor[200]};
   margin: 0.5rem 0.8rem;
+  @media ${({ theme }) => theme.DEVICE.mobile} {
+    font-size: 0.8rem;
+    margin: 0.5rem -0.2rem;
+  }
 `;
 
 const S = {
