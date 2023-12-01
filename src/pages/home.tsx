@@ -13,7 +13,7 @@ function HomePage() {
     <S.Wrap>
       <S.Wrapper>
         <S.Img1Wrap>
-          <S.Img1 data-aos="fade-right" src="../../public/Img/운동고민.png" />
+          <S.Img1 data-aos="fade-right" src="/public/Img/운동고민.png" />
           <S.Content data-aos="fade-right">
             운동하기로 마음 먹었는데 <br />
             운동 하는 방법은 모르고..
@@ -34,10 +34,10 @@ function HomePage() {
             3. 잠을 푹 잔다 <br />
             4. 마지막은 근심삼일과 운동하기!
           </S.Content>
-          <S.Img2 data-aos="fade-left" src="../../public/Img/스트레스 관리.png" />
+          <S.Img2 data-aos="fade-left" src="/public/Img/스트레스 관리.png" />
         </S.Img2Wrap>
         <S.Img3Wrap>
-          <S.Img3 data-aos="fade-up" data-aos-duration="3000" src="../../public/Img/로고.png" />
+          <S.Img3 data-aos="fade-up" data-aos-duration="3000" src="/public/Img/로고.png" />
           <S.WebInfo data-aos="fade-up" data-aos-duration="3000">
             당신의 운동 여정이 '작심삼일'로 끝나지 않도록 도와줄 <br />
             최고의 헬스 운동 방법과 팁을 찾고 계신가요? <br />
