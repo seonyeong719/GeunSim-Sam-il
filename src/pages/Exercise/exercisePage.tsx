@@ -101,7 +101,7 @@ function ExercisePage() {
                     {list?.images[0]?.image ? (
                       <S.Img src={list?.images[0]?.image} />
                     ) : (
-                      <S.Img src={"../../public/Img/로고.png"} />
+                      <S.Img src={"/public/Img/로고.png"} />
                     )}
                     <S.Info>
                       <S.InfoCate>{list.category.name}</S.InfoCate>
